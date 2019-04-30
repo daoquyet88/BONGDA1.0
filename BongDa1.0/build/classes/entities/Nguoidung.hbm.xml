@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 30, 2019 9:34:12 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entities.Nguoidung" table="nguoidung" catalog="db_bongda" optimistic-lock="version">
+        <id name="maNguoiDung" type="string">
+            <column name="MaNguoiDung" length="200" />
+            <generator class="assigned" />
+        </id>
+        <property name="tenNguoiDung" type="string">
+            <column name="TenNguoiDung" length="200" not-null="true" />
+        </property>
+        <property name="useName" type="string">
+            <column name="UseName" length="50" not-null="true" />
+        </property>
+        <property name="passWord" type="string">
+            <column name="PassWord" length="50" not-null="true" />
+        </property>
+        <property name="quyen" type="int">
+            <column name="Quyen" not-null="true" />
+        </property>
+        <property name="ngayLap" type="string">
+            <column name="NgayLap" length="20" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
