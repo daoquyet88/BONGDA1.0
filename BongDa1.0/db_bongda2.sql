@@ -44,7 +44,7 @@ CREATE TABLE `cauthu` (
 --
 -- Table structure for table `doibong`
 --
---Bổ sung thêm sân nhà của đội bóng
+
 CREATE TABLE `doibong` (
   `MaDoiBong` int(11) NOT NULL,
   `TenDoiBong` varchar(200) NOT NULL,
@@ -56,7 +56,7 @@ CREATE TABLE `doibong` (
 
 -- --------------------------------------------------------
 
--- Điều chỉnh ngày 01/05/2019 ndvuong
+-- 
 -- Table structure for table `giaidau`
 --
 
@@ -64,17 +64,11 @@ CREATE TABLE `giaidau` (
   `MaGiai` int(11) NOT NULL,
   `TenGiai` varchar(200) NOT NULL,
   `ThoiGian` varchar(200) NOT NULL
-  /*`Vong` int(11) NOT NULL,
-  `ChuNha` int(11) NOT NULL,
-  `TySo` int(11) NOT NULL,
-  `Khach` int(11) NOT NULL,
-  `San` int(11) NOT NULL,
-  `MaTrongTai` varchar(11) NOT NULL*/
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
---bổ sung ngày 01/05/2019 ndvuong | tạo ra để con dữ liệu combobox
+--
 -- Table structure for table `vong`
 --
 
@@ -85,7 +79,7 @@ CREATE TABLE `vong` (
 
 -- --------------------------------------------------------
 
---bổ sung ngày 01/05/2019 ndvuong | tạo ra để con dữ liệu combobox
+--
 -- Table structure for table `loaibanthang`
 --
 
@@ -96,7 +90,7 @@ CREATE TABLE `loaibanthang` (
 
 -- --------------------------------------------------------
 
---bổ sung ngày 01/05/2019 ndvuong
+--
 -- Table structure for table `trandau`
 --
 
@@ -114,7 +108,7 @@ CREATE TABLE `trandau` (
 
 -- --------------------------------------------------------
 
---bổ sung ngày 01/05/2019 ndvuong
+--
 -- Table structure for table `chitiettrandau`
 --
 
@@ -123,12 +117,12 @@ CREATE TABLE `chitiettrandau` (
   `MaDoiBong` int(11) NOT NULL,
   `MaCauThu` int(11) NOT NULL,
   `loaibanthang` int(11) NOT NULL,
-  `thoidiem` int(11) NOT NULL,
+  `thoidiem` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
---bổ sung ngày 01/05/2019 ndvuong
+--
 -- Table structure for table `QD`
 --
 
@@ -139,7 +133,7 @@ CREATE TABLE `QD` (
   `Thang` int(11)  NULL,
   `Hoa` int(11)  NULL,
   `Thua` int(11)  NULL,
-  `uutienxephang` int(11)  NULL,
+  `uutienxephang` int(11)  NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
