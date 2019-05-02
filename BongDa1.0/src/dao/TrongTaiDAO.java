@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package dao;
 import java.util.*;
 import entities.*;
@@ -20,11 +16,11 @@ public class TrongTaiDAO {
         }
     }
     // tim tai khoan dua tren usename
-    public Trongtai find(String tenTrongTai)
+    public Trongtai find(String MaTrongTai)
     {
         try {
             sf.getCurrentSession().beginTransaction();
-            return (Trongtai) sf.getCurrentSession().get(Trongtai.class,tenTrongTai);
+            return (Trongtai) sf.getCurrentSession().get(Trongtai.class,MaTrongTai);
         } catch (Exception e) {
             return null;
         }
@@ -41,11 +37,23 @@ public class TrongTaiDAO {
             return false;
         }
     }
-    public boolean saveorupdate(Trongtai tt)
+    public boolean save(Trongtai tt)
     {
         try {
             sf.getCurrentSession().beginTransaction();
-            sf.getCurrentSession().saveOrUpdate(tt);
+            sf.getCurrentSession().save(tt);
+            sf.getCurrentSession().getTransaction().commit();
+            return true;
+        } catch (Exception e) {
+            sf.getCurrentSession().getTransaction().rollback();
+            return false;
+        }
+    }
+    public boolean update(Trongtai tt)
+    {
+        try {
+            sf.getCurrentSession().beginTransaction();
+            sf.getCurrentSession().update(tt);
             sf.getCurrentSession().getTransaction().commit();
             return true;
         } catch (Exception e) {

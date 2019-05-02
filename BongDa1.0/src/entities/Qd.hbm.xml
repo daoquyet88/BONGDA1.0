@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 2, 2019 7:38:23 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entities.Qd" table="qd" catalog="dbbongda2" optimistic-lock="version">
+        <id name="maQuyDinh" type="int">
+            <column name="MaQuyDinh" />
+            <generator class="assigned" />
+        </id>
+        <property name="tenLuat" type="string">
+            <column name="TenLuat" length="100" not-null="true" />
+        </property>
+        <property name="numberMax" type="java.lang.Integer">
+            <column name="NumberMax" />
+        </property>
+        <property name="numberMin" type="java.lang.Integer">
+            <column name="NumberMin" />
+        </property>
+        <property name="thang" type="java.lang.Integer">
+            <column name="Thang" />
+        </property>
+        <property name="hoa" type="java.lang.Integer">
+            <column name="Hoa" />
+        </property>
+        <property name="thua" type="java.lang.Integer">
+            <column name="Thua" />
+        </property>
+        <property name="uutienxephang" type="java.lang.Integer">
+            <column name="uutienxephang" />
+        </property>
+    </class>
+</hibernate-mapping>

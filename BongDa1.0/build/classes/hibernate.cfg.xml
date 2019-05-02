@@ -43,16 +43,21 @@ Contributor(s):
   <session-factory>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/db_bongda?zeroDateTimeBehavior=convertToNull</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/dbbongda2?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.show_sql">true</property>
     <property name="hibernate.current_session_context_class">thread</property>
-    <mapping resource="entities/Giaidau.hbm.xml"/>
-    <mapping resource="entities/Nguoidung.hbm.xml"/>
     <mapping resource="entities/Nhataitro.hbm.xml"/>
-    <mapping resource="entities/Cauthu.hbm.xml"/>
-    <mapping resource="entities/Doibong.hbm.xml"/>
-    <mapping resource="entities/Trongtai.hbm.xml"/>
     <mapping resource="entities/Xemhang.hbm.xml"/>
+    <mapping resource="entities/Cauthu.hbm.xml"/>
+    <mapping resource="entities/Nguoidung.hbm.xml"/>
+    <mapping resource="entities/Loaibanthang.hbm.xml"/>
+    <mapping resource="entities/Chitiettrandau.hbm.xml"/>
+    <mapping resource="entities/Doibong.hbm.xml"/>
+    <mapping resource="entities/Giaidau.hbm.xml"/>
+    <mapping resource="entities/Vong.hbm.xml"/>
+    <mapping resource="entities/Trandau.hbm.xml"/>
+    <mapping resource="entities/Trongtai.hbm.xml"/>
+    <mapping resource="entities/Qd.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

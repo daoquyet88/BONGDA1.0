@@ -1,5 +1,5 @@
 package entities;
-// Generated Apr 30, 2019 9:34:11 AM by Hibernate Tools 4.3.1
+// Generated May 2, 2019 7:38:22 AM by Hibernate Tools 4.3.1
 
 
 
@@ -10,26 +10,16 @@ public class Giaidau  implements java.io.Serializable {
 
 
      private int maGiai;
+     private String tenGiai;
      private String thoiGian;
-     private int vong;
-     private int chuNha;
-     private int tySo;
-     private int khach;
-     private int san;
-     private String maTrongTai;
 
     public Giaidau() {
     }
 
-    public Giaidau(int maGiai, String thoiGian, int vong, int chuNha, int tySo, int khach, int san, String maTrongTai) {
+    public Giaidau(int maGiai, String tenGiai, String thoiGian) {
        this.maGiai = maGiai;
+       this.tenGiai = tenGiai;
        this.thoiGian = thoiGian;
-       this.vong = vong;
-       this.chuNha = chuNha;
-       this.tySo = tySo;
-       this.khach = khach;
-       this.san = san;
-       this.maTrongTai = maTrongTai;
     }
    
     public int getMaGiai() {
@@ -39,54 +29,19 @@ public class Giaidau  implements java.io.Serializable {
     public void setMaGiai(int maGiai) {
         this.maGiai = maGiai;
     }
+    public String getTenGiai() {
+        return this.tenGiai;
+    }
+    
+    public void setTenGiai(String tenGiai) {
+        this.tenGiai = tenGiai;
+    }
     public String getThoiGian() {
         return this.thoiGian;
     }
     
     public void setThoiGian(String thoiGian) {
         this.thoiGian = thoiGian;
-    }
-    public int getVong() {
-        return this.vong;
-    }
-    
-    public void setVong(int vong) {
-        this.vong = vong;
-    }
-    public int getChuNha() {
-        return this.chuNha;
-    }
-    
-    public void setChuNha(int chuNha) {
-        this.chuNha = chuNha;
-    }
-    public int getTySo() {
-        return this.tySo;
-    }
-    
-    public void setTySo(int tySo) {
-        this.tySo = tySo;
-    }
-    public int getKhach() {
-        return this.khach;
-    }
-    
-    public void setKhach(int khach) {
-        this.khach = khach;
-    }
-    public int getSan() {
-        return this.san;
-    }
-    
-    public void setSan(int san) {
-        this.san = san;
-    }
-    public String getMaTrongTai() {
-        return this.maTrongTai;
-    }
-    
-    public void setMaTrongTai(String maTrongTai) {
-        this.maTrongTai = maTrongTai;
     }
 
 

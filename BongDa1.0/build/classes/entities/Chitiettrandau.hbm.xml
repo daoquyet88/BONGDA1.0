@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 2, 2019 7:38:23 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entities.Chitiettrandau" table="chitiettrandau" catalog="dbbongda2" optimistic-lock="version">
+        <composite-id name="id" class="entities.ChitiettrandauId">
+            <key-property name="maTran" type="int">
+                <column name="MaTran" />
+            </key-property>
+            <key-property name="maDoiBong" type="int">
+                <column name="MaDoiBong" />
+            </key-property>
+            <key-property name="maCauThu" type="int">
+                <column name="MaCauThu" />
+            </key-property>
+        </composite-id>
+        <property name="loaibanthang" type="int">
+            <column name="loaibanthang" not-null="true" />
+        </property>
+        <property name="thoidiem" type="int">
+            <column name="thoidiem" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
