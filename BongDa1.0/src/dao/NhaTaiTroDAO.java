@@ -4,10 +4,10 @@ import java.util.*;
 import entities.*;
 import org.hibernate.*;
 
-public class TrongTaiDAO {
+public class NhaTaiTroDAO {
        
   
-    public boolean add_TT(Trongtai tt) {
+    public boolean add_NhaTaiTro(Nhataitro tt) {
         try {          
 
             Session session=HibernateUtil.getSessionFactory().getCurrentSession();
@@ -22,12 +22,12 @@ public class TrongTaiDAO {
     }
 
 
-    public boolean update_TT(Trongtai sinhVien) {
+    public boolean update_NhaTaiTro(Nhataitro tt) {
         try {           
         
             Session session =HibernateUtil.getSessionFactory().getCurrentSession();
             Transaction transaction =session.beginTransaction();
-            session.update(sinhVien);
+            session.update(tt);
             transaction.commit();
             return true;
         } catch (Exception e) {
@@ -36,7 +36,7 @@ public class TrongTaiDAO {
     }
 
 
-    public boolean delete_TT(Trongtai tt) {
+    public boolean delete_NhaTaiTro(Nhataitro tt) {
         try {
    
         Session session =HibernateUtil.getSessionFactory().getCurrentSession();
@@ -50,7 +50,7 @@ public class TrongTaiDAO {
     }
 
    
-    public Trongtai load_TT(String id_Sinh_vien) 
+    public Trongtai load_NhaTaiTro(String id_Sinh_vien) 
     {
      Session session=HibernateUtil.getSessionFactory().getCurrentSession();
      Transaction transaction=session.beginTransaction();
