@@ -3,6 +3,7 @@ package bongda1.pkg0;
 import javax.swing.*;
 import dao.*;
 import entities.*;
+import javax.swing.table.DefaultTableModel;
 import org.hibernate.*;
 
 public class SuaTrongTai extends javax.swing.JFrame {
@@ -168,7 +169,7 @@ public class SuaTrongTai extends javax.swing.JFrame {
             tt.setTenTrongTai(this.txtTenTrongTai.getText());
             tt.setNgaySinh(this.txtNgaySinh.getText());
             tt.setSoTranBat(Integer.parseInt(this.txt_SoTranBat.getText()));
-            if (ttd.update(tt)) {
+            if (ttd.update_TT(tt)) {
                 JOptionPane.showMessageDialog(rootPane, "update thanh cong");
 
             } else {
@@ -177,7 +178,7 @@ public class SuaTrongTai extends javax.swing.JFrame {
             // JOptionPane.showMessageDialog(rootPane,"Them thanh cong");
         }
     }//GEN-LAST:event_btnCapNhapActionPerformed
-
+     
     private void txt_SoTranBatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_SoTranBatActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_SoTranBatActionPerformed

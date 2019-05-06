@@ -26,7 +26,7 @@ public class TrongTaiWindow extends javax.swing.JPanel {
         dtm.addColumn("TenTrongTai");
         dtm.addColumn("NgaySinh");
         dtm.addColumn("SoTranBat");
-        for(Trongtai tt : this.ttd.findAll())
+        for(Trongtai tt : this.ttd.load_danhSachTT())
         {
             dtm.addRow(new Object[]{tt.getMaTrongTai(),tt.getTenTrongTai(),tt.getNgaySinh(),tt.getSoTranBat()});
             
@@ -212,7 +212,11 @@ public class TrongTaiWindow extends javax.swing.JPanel {
         if(cf==JOptionPane.YES_OPTION)
         {
             
-            if (this.ttd.delete(ttd.find(maTrongTai))) {
+           String name=this.tbTrongTai.getValueAt(this.tbTrongTai.getSelectedRow(),0).toString();
+           Trongtai tt=ttd.load_TT(name);
+           
+            if(this.ttd.delete_TT(tt))
+            {
                 JOptionPane.showMessageDialog(null," xoa thanh cong");
                 LoadData();
             } else {

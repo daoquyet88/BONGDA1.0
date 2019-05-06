@@ -158,7 +158,7 @@ public class ThemTrongTai extends javax.swing.JFrame {
             tt.setTenTrongTai(this.txtTenTrongTai.getText());
             tt.setNgaySinh(this.txtNgaySinh.getText());
             tt.setSoTranBat(Integer.parseInt(this.txt_SoTranBat.getText()));
-           if( ttd.save(tt))
+           if( ttd.add_TT(tt))
            {
                JOptionPane.showMessageDialog(rootPane,"Them thanh cong");
 

@@ -5,61 +5,73 @@ import entities.*;
 import org.hibernate.*;
 
 public class TrongTaiDAO {
-    private final SessionFactory sf=HibernateUtil.getSessionFactory();
-    public List<Trongtai> findAll()
-    {
-        try {
-            sf.getCurrentSession().beginTransaction();
-            return sf.getCurrentSession().createCriteria(Trongtai.class).list();
+       
+  
+    public boolean add_TT(Trongtai tt) {
+        try {          
+
+            Session session=HibernateUtil.getSessionFactory().getCurrentSession();
+            Transaction transacsion=session.beginTransaction();
+            session.
+            save(tt);
+            transacsion.commit();
+            return  true;
         } catch (Exception e) {
-            return null;
-        }
-    }
-    // tim tai khoan dua tren usename
-    public Trongtai find(String MaTrongTai)
-    {
-        try {
-            sf.getCurrentSession().beginTransaction();
-            return (Trongtai) sf.getCurrentSession().get(Trongtai.class,MaTrongTai);
-        } catch (Exception e) {
-            return null;
-        }
-    }
-    public boolean delete(Trongtai tt)
-    {
-        try {
-            sf.getCurrentSession().beginTransaction();
-            sf.getCurrentSession().delete(tt);
-            sf.getCurrentSession().getTransaction().commit();
-            return true;
-        } catch (Exception e) {
-            sf.getCurrentSession().getTransaction().rollback();
             return false;
         }
     }
-    public boolean save(Trongtai tt)
-    {
-        try {
-            sf.getCurrentSession().beginTransaction();
-            sf.getCurrentSession().save(tt);
-            sf.getCurrentSession().getTransaction().commit();
+
+
+    public boolean update_TT(Trongtai sinhVien) {
+        try {           
+        
+            Session session =HibernateUtil.getSessionFactory().getCurrentSession();
+            Transaction transaction =session.beginTransaction();
+            session.update(sinhVien);
+            transaction.commit();
             return true;
         } catch (Exception e) {
-            sf.getCurrentSession().getTransaction().rollback();
             return false;
         }
     }
-    public boolean update(Trongtai tt)
-    {
+
+
+    public boolean delete_TT(Trongtai tt) {
         try {
-            sf.getCurrentSession().beginTransaction();
-            sf.getCurrentSession().update(tt);
-            sf.getCurrentSession().getTransaction().commit();
-            return true;
+            
+        
+        Session session =HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction transacsion=session.beginTransaction();
+        session.delete(tt);
+        transacsion.commit();
+        return true;
         } catch (Exception e) {
-            sf.getCurrentSession().getTransaction().rollback();
             return false;
         }
     }
+
+   
+    public Trongtai load_TT(String id_Sinh_vien) 
+    {
+     Session session=HibernateUtil.getSessionFactory().getCurrentSession();
+     Transaction transaction=session.beginTransaction();
+     Trongtai sinhVien=(Trongtai) session.get(Trongtai.class,id_Sinh_vien);
+     transaction.commit();
+     return sinhVien;
+    }
+
+ 
+    public List<Trongtai> load_danhSachTT() 
+    {
+        Session session =HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction transacsion=session.beginTransaction();
+        // lenh hql
+        String hql="from Trongtai";
+        Query query=session.createQuery(hql);
+        List<Trongtai> list_TT=query.list();
+        transacsion.commit();
+        return list_TT;        
+    }
+    
 
 }
