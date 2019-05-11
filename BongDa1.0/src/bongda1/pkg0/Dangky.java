@@ -37,7 +37,7 @@ public class Dangky extends javax.swing.JFrame {
                    }  
                 return true;
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(rootPane,"Nhap So Nguyen Vao o So Tran Bat");
+                JOptionPane.showMessageDialog(rootPane,"Gặp lỗi");
                 return false;
             }
             
@@ -148,25 +148,36 @@ public class Dangky extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(CheckInfomation())
        {
+           
             DangKyDAO dkd=new DangKyDAO();
             Nguoidung nn=new Nguoidung();
             nn.setQuyen(1);//người dùng thường
             nn.setUseName(txtUserName.getText());
             nn.setMaNguoiDung(txtUserName.getText());
-            nn.setPassWord(PsPassWord.getText());
+            String pass= "";
+            try {
+               pass= dkd.mahoaMD5(PsPassWord.getText());
+               nn.setPassWord(pass);
+           } catch (Exception e) {
+               JOptionPane.showMessageDialog(rootPane,"Mã hóa pass gặp lỗi");
+               return;
+           }
             nn.setTenNguoiDung(txtFullName.getText());
-            nn.setNgayLap("zxzx");
-           if( dkd.AddNguoiDung(nn))
-           {
-               JOptionPane.showMessageDialog(rootPane,"Tao tai khoan thanh cong");
+            nn.setNgayLap("");
+            if( dkd.AddNguoiDung(nn))
+            {
+                JOptionPane.showMessageDialog(rootPane,"Tạo tài khoản thành công");
 
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(rootPane,"Tạo tài khoản thất bại");
+            }
            }
-           else
-           {
-               JOptionPane.showMessageDialog(rootPane,"Thao tac tao tai khoan that bai");
-           }
+           else{
+               //JOptionPane.showMessageDialog(rootPane,"UserName da ton tai. Vui long thu mot username khac");
+            }
            // JOptionPane.showMessageDialog(rootPane,"Them thanh cong");
-       }
     }//GEN-LAST:event_btnDangkyActionPerformed
 
     private void txtUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserNameActionPerformed
