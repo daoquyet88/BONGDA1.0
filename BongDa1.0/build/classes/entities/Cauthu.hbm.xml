@@ -29,5 +29,8 @@
         <property name="theDo" type="int">
             <column name="TheDo" not-null="true" />
         </property>
+        <property name="maDoiBong" type="int">
+            <column name="MaDoiBong" not-null="true" />
+        </property>
     </class>
 </hibernate-mapping>

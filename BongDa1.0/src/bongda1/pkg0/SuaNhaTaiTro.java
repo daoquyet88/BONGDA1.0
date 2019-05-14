@@ -10,17 +10,16 @@ public class SuaNhaTaiTro extends javax.swing.JFrame {
 
     public SuaNhaTaiTro() {
         initComponents();
-        lbMaTrongTai.setText(maTT);
+       
     }
-    public SuaNhaTaiTro(String maTrongTai,String tenTrongTai,String ngaySinh,int soTranBat) {
+    public SuaNhaTaiTro(int maNhaTaiTro,String tenNhaTaiTro,String hinhThuc) {
         initComponents();
-        lbMaTrongTai.setText(maTrongTai);
-        txtTenTrongTai.setText(tenTrongTai);
-        txtNgaySinh.setText(ngaySinh);
-        txt_SoTranBat.setText(String.valueOf(soTranBat));
+        lbMaNhaTaiTro.setText(String.valueOf(maNhaTaiTro));
+        txtTenNhaTaiTro.setText(tenNhaTaiTro);
+        txtHinhThuc.setText(hinhThuc);
     }
-    Trongtai tt=new Trongtai();
-    String maTT=tt.getMaTrongTai();
+    Nhataitro ntt=new Nhataitro();
+    int maNTT=ntt.getMaNhaTaiTro();
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -32,18 +31,16 @@ public class SuaNhaTaiTro extends javax.swing.JFrame {
         btnCapNhap = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        txtTenTrongTai = new javax.swing.JTextField();
-        txtNgaySinh = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        txt_SoTranBat = new javax.swing.JTextField();
-        lbMaTrongTai = new javax.swing.JLabel();
+        txtTenNhaTaiTro = new javax.swing.JTextField();
+        txtHinhThuc = new javax.swing.JTextField();
+        lbMaNhaTaiTro = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel6.setText("Thêm Mới Trọng Tài :");
 
-        jLabel1.setText("Mã Trọng Tài :");
+        jLabel1.setText("Mã Nhà Tài Trợ :");
 
         btnThoat.setText("Thoát");
         btnThoat.addActionListener(new java.awt.event.ActionListener() {
@@ -59,31 +56,29 @@ public class SuaNhaTaiTro extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("Tên Trọng Tài :");
+        jLabel2.setText("Tên Nhà Tài Trợ :");
 
-        jLabel4.setText("Ngày Sinh :");
+        jLabel4.setText("Hình Thức Tài Trợ :");
 
-        jLabel3.setText("Số Trận Bắt :");
-
-        txt_SoTranBat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_SoTranBatActionPerformed(evt);
-            }
-        });
-
-        lbMaTrongTai.setText("jLabel5");
+        lbMaNhaTaiTro.setText("jLabel5");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(341, 341, 341)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txt_SoTranBat, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
-                    .addComponent(txtNgaySinh, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
-                    .addComponent(txtTenTrongTai, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
-                    .addComponent(lbMaTrongTai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(341, 341, 341)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtHinhThuc, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
+                            .addComponent(txtTenNhaTaiTro, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
+                            .addComponent(lbMaNhaTaiTro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(288, 288, 288)
+                        .addComponent(btnCapNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(68, 68, 68)
+                        .addComponent(btnThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(190, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -92,29 +87,25 @@ public class SuaNhaTaiTro extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addComponent(jLabel4)
                         .addComponent(jLabel2)
-                        .addComponent(jLabel3)
                         .addGroup(layout.createSequentialGroup()
                             .addGap(102, 102, 102)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(150, 150, 150)
-                            .addComponent(btnCapNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(44, 44, 44)
-                            .addComponent(btnThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addContainerGap(191, Short.MAX_VALUE)))
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addContainerGap(241, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(113, 113, 113)
-                .addComponent(lbMaTrongTai)
+                .addComponent(lbMaNhaTaiTro)
                 .addGap(35, 35, 35)
-                .addComponent(txtTenTrongTai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtTenNhaTaiTro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
-                .addComponent(txtNgaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addComponent(txt_SoTranBat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(114, Short.MAX_VALUE))
+                .addComponent(txtHinhThuc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(69, 69, 69)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCapNhap)
+                    .addComponent(btnThoat))
+                .addContainerGap(70, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(39, 39, 39)
@@ -125,13 +116,7 @@ public class SuaNhaTaiTro extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addGap(32, 32, 32)
                     .addComponent(jLabel4)
-                    .addGap(36, 36, 36)
-                    .addComponent(jLabel3)
-                    .addGap(50, 50, 50)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnCapNhap)
-                        .addComponent(btnThoat))
-                    .addContainerGap(40, Short.MAX_VALUE)))
+                    .addContainerGap(167, Short.MAX_VALUE)))
         );
 
         pack();
@@ -140,15 +125,15 @@ public class SuaNhaTaiTro extends javax.swing.JFrame {
     public boolean kiemTraFile()
         {
             try {
-                if(txtNgaySinh.getText().equals("")||txtTenTrongTai.getText().equals("")||txt_SoTranBat.getText().equals(""))
+                if(txtHinhThuc.getText().equals("")||txtTenNhaTaiTro.getText().equals(""))
                 {
                       JOptionPane.showMessageDialog(rootPane,"chua nhap lieu");
                          return false;
                 }
-                Integer.parseInt(txt_SoTranBat.getText());            
+                           
                 return true;
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(rootPane,"Nhap So Nguyen Vao o So Tran Bat");
+                JOptionPane.showMessageDialog(rootPane,"Nhap Sai");
                 return false;
             }
         }
@@ -162,13 +147,13 @@ public class SuaNhaTaiTro extends javax.swing.JFrame {
     private void btnCapNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhapActionPerformed
 
         if (kiemTraFile()) {
-            TrongTaiDAO ttd = new TrongTaiDAO();
-            Trongtai tt = new Trongtai();
-            tt.setMaTrongTai(this.lbMaTrongTai.getText());
-            tt.setTenTrongTai(this.txtTenTrongTai.getText());
-            tt.setNgaySinh(this.txtNgaySinh.getText());
-            tt.setSoTranBat(Integer.parseInt(this.txt_SoTranBat.getText()));
-            if (ttd.update_TT(tt)) {
+            NhaTaiTroDao nttDAO=new NhaTaiTroDao();
+            Nhataitro ntt=new Nhataitro();
+            ntt.setMaNhaTaiTro(Integer.parseInt(this.lbMaNhaTaiTro.getText().toString()));
+            ntt.setTenNhaTaiTro(this.txtTenNhaTaiTro.getText());
+            ntt.setHinhThuc(this.txtHinhThuc.getText());
+            
+            if (nttDAO.update(ntt)) {
                 JOptionPane.showMessageDialog(rootPane, "update thanh cong");
 
             } else {
@@ -178,10 +163,6 @@ public class SuaNhaTaiTro extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnCapNhapActionPerformed
      
-    private void txt_SoTranBatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_SoTranBatActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_SoTranBatActionPerformed
-
   
     public static void main(String args[]) throws java.lang.InstantiationException {
        
@@ -212,12 +193,10 @@ public class SuaNhaTaiTro extends javax.swing.JFrame {
     private javax.swing.JButton btnThoat;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel lbMaTrongTai;
-    private javax.swing.JTextField txtNgaySinh;
-    private javax.swing.JTextField txtTenTrongTai;
-    private javax.swing.JTextField txt_SoTranBat;
+    private javax.swing.JLabel lbMaNhaTaiTro;
+    private javax.swing.JTextField txtHinhThuc;
+    private javax.swing.JTextField txtTenNhaTaiTro;
     // End of variables declaration//GEN-END:variables
 }

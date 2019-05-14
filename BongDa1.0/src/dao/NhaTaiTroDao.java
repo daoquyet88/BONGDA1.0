@@ -1,19 +1,25 @@
 
 package dao;
+
 import java.util.*;
 import entities.*;
 import org.hibernate.*;
 
-public class NhaTaiTroDAO {
-       
-  
-    public boolean add_NhaTaiTro(Nhataitro tt) {
+/**
+ * Hibernate Utility class with a convenient method to get Session Factory
+ * object.
+ *
+ * @author Anh Duy
+ */
+public class NhaTaiTroDao {
+
+   public boolean add(Nhataitro ntt) {
         try {          
 
             Session session=HibernateUtil.getSessionFactory().getCurrentSession();
             Transaction transacsion=session.beginTransaction();
             session.
-            save(tt);
+            save(ntt);
             transacsion.commit();
             return  true;
         } catch (Exception e) {
@@ -22,55 +28,53 @@ public class NhaTaiTroDAO {
     }
 
 
-    public boolean update_NhaTaiTro(Nhataitro tt) {
+    public boolean update(Nhataitro ntt) {
         try {           
         
             Session session =HibernateUtil.getSessionFactory().getCurrentSession();
             Transaction transaction =session.beginTransaction();
-            session.update(tt);
+            session.update(ntt);
             transaction.commit();
             return true;
-        } catch (Exception e) {
+        } catch (HibernateException e) {
             return false;
         }
     }
 
 
-    public boolean delete_NhaTaiTro(Nhataitro tt) {
+    public boolean delete(Nhataitro ntt) {
         try {
    
         Session session =HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction transacsion=session.beginTransaction();
-        session.delete(tt);
+        session.delete(ntt);
         transacsion.commit();
         return true;
-        } catch (Exception e) {
+        } catch (HibernateException e) {
             return false;
         }
     }
 
    
-    public Trongtai load_NhaTaiTro(String id_Sinh_vien) 
+    public Nhataitro load(int id_ntt) 
     {
      Session session=HibernateUtil.getSessionFactory().getCurrentSession();
      Transaction transaction=session.beginTransaction();
-     Trongtai sinhVien=(Trongtai) session.get(Trongtai.class,id_Sinh_vien);
+     Nhataitro ntt=(Nhataitro) session.get(Nhataitro.class,id_ntt);
      transaction.commit();
-     return sinhVien;
+     return ntt;
     }
 
  
-    public List<Trongtai> load_danhSachTT() 
+    public List<Nhataitro> load_danhSach() 
     {
         Session session =HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction transacsion=session.beginTransaction();
         // lenh hql
-        String hql="from Trongtai";
+        String hql="from Nhataitro";
         Query query=session.createQuery(hql);
-        List<Trongtai> list_TT=query.list();
+        List<Nhataitro> list_ntt=query.list();
         transacsion.commit();
-        return list_TT;        
+        return list_ntt;        
     }
-    
-
 }

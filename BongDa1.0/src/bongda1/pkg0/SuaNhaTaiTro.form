@@ -23,13 +23,22 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="341" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="txt_SoTranBat" pref="219" max="32767" attributes="0"/>
-                  <Component id="txtNgaySinh" pref="219" max="32767" attributes="0"/>
-                  <Component id="txtTenTrongTai" pref="219" max="32767" attributes="0"/>
-                  <Component id="lbMaTrongTai" alignment="0" max="32767" attributes="0"/>
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="341" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="txtHinhThuc" pref="219" max="32767" attributes="0"/>
+                          <Component id="txtTenNhaTaiTro" pref="219" max="32767" attributes="0"/>
+                          <Component id="lbMaNhaTaiTro" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="288" max="-2" attributes="0"/>
+                      <Component id="btnCapNhap" min="-2" pref="92" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
+                      <Component id="btnThoat" min="-2" pref="99" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace pref="190" max="32767" attributes="0"/>
           </Group>
@@ -40,19 +49,12 @@
                       <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
                           <Component id="jLabel6" min="-2" pref="233" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
-                          <Component id="btnCapNhap" min="-2" pref="92" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                          <Component id="btnThoat" min="-2" pref="99" max="-2" attributes="0"/>
-                      </Group>
                   </Group>
-                  <EmptySpace pref="191" max="32767" attributes="0"/>
+                  <EmptySpace pref="241" max="32767" attributes="0"/>
               </Group>
           </Group>
       </Group>
@@ -61,14 +63,17 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
-              <Component id="lbMaTrongTai" min="-2" max="-2" attributes="0"/>
+              <Component id="lbMaNhaTaiTro" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-              <Component id="txtTenTrongTai" min="-2" max="-2" attributes="0"/>
+              <Component id="txtTenNhaTaiTro" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-              <Component id="txtNgaySinh" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-              <Component id="txt_SoTranBat" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="114" max="32767" attributes="0"/>
+              <Component id="txtHinhThuc" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnCapNhap" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnThoat" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="70" max="32767" attributes="0"/>
           </Group>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
@@ -80,14 +85,7 @@
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="50" pref="50" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btnCapNhap" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnThoat" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace pref="40" max="32767" attributes="0"/>
+                  <EmptySpace pref="167" max="32767" attributes="0"/>
               </Group>
           </Group>
       </Group>
@@ -104,7 +102,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="M&#xe3; Tr&#x1ecd;ng T&#xe0;i :"/>
+        <Property name="text" type="java.lang.String" value="M&#xe3; Nh&#xe0; T&#xe0;i Tr&#x1ee3; :"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnThoat">
@@ -125,29 +123,19 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="T&#xea;n Tr&#x1ecd;ng T&#xe0;i :"/>
+        <Property name="text" type="java.lang.String" value="T&#xea;n Nh&#xe0; T&#xe0;i Tr&#x1ee3; :"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Ng&#xe0;y Sinh :"/>
+        <Property name="text" type="java.lang.String" value="H&#xec;nh Th&#x1ee9;c T&#xe0;i Tr&#x1ee3; :"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtTenTrongTai">
+    <Component class="javax.swing.JTextField" name="txtTenNhaTaiTro">
     </Component>
-    <Component class="javax.swing.JTextField" name="txtNgaySinh">
+    <Component class="javax.swing.JTextField" name="txtHinhThuc">
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel3">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="S&#x1ed1; Tr&#x1ead;n B&#x1eaf;t :"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txt_SoTranBat">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_SoTranBatActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lbMaTrongTai">
+    <Component class="javax.swing.JLabel" name="lbMaNhaTaiTro">
       <Properties>
         <Property name="text" type="java.lang.String" value="jLabel5"/>
       </Properties>

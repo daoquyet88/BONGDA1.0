@@ -17,11 +17,12 @@ public class Cauthu  implements java.io.Serializable {
      private int banThang;
      private int theVang;
      private int theDo;
+     private int maDoiBong;
 
     public Cauthu() {
     }
 
-    public Cauthu(int maCauThu, String tenCauThu, String viTri, int soAo, String ngaySinh, int banThang, int theVang, int theDo) {
+    public Cauthu(int maCauThu, String tenCauThu, String viTri, int soAo, String ngaySinh, int banThang, int theVang, int theDo,int maDoiBong) {
        this.maCauThu = maCauThu;
        this.tenCauThu = tenCauThu;
        this.viTri = viTri;
@@ -35,7 +36,9 @@ public class Cauthu  implements java.io.Serializable {
     public int getMaCauThu() {
         return this.maCauThu;
     }
-    
+     public int getMaDoiBong() {
+        return this.maDoiBong;
+    }
     public void setMaCauThu(int maCauThu) {
         this.maCauThu = maCauThu;
     }
@@ -45,6 +48,9 @@ public class Cauthu  implements java.io.Serializable {
     
     public void setTenCauThu(String tenCauThu) {
         this.tenCauThu = tenCauThu;
+    }
+    public void setMaDoiBong(int maDoiBong) {
+        this.maDoiBong=maDoiBong;
     }
     public String getViTri() {
         return this.viTri;
