@@ -15,7 +15,7 @@ public class TopGhiBanWindow extends javax.swing.JPanel {
     CauThuDAO ctd=new CauThuDAO();
     public int maCauThu;
     public String tenCauThu;
-    public String Vitri;
+    public int Vitri;
     public int soAo;
     public String NgaySinh;
     public int BanThang;
@@ -70,7 +70,7 @@ private void LoadData()
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbCauThu = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        btnSua = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         BtnXoa = new javax.swing.JButton();
@@ -129,7 +129,12 @@ private void LoadData()
         });
         jScrollPane1.setViewportView(tbCauThu);
 
-        jButton1.setText("Sửa");
+        btnSua.setText("Sửa");
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Report");
 
@@ -156,7 +161,7 @@ private void LoadData()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton3)
                 .addGap(37, 37, 37)
-                .addComponent(jButton1)
+                .addComponent(btnSua)
                 .addGap(40, 40, 40)
                 .addComponent(BtnXoa)
                 .addGap(26, 26, 26)
@@ -172,7 +177,7 @@ private void LoadData()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(btnSua)
                     .addComponent(jButton2)
                     .addComponent(jButton3)
                     .addComponent(BtnXoa))
@@ -206,7 +211,7 @@ private void LoadData()
     private void tbCauThuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbCauThuMouseClicked
        maCauThu = Integer.parseInt(this.tbCauThu.getValueAt(this.tbCauThu.getSelectedRow(), 0).toString());
        tenCauThu= this.tbCauThu.getValueAt(this.tbCauThu.getSelectedRow(), 1).toString();
-       Vitri = this.tbCauThu.getValueAt(this.tbCauThu.getSelectedRow(), 2).toString();
+       Vitri = Integer.parseInt(this.tbCauThu.getValueAt(this.tbCauThu.getSelectedRow(), 2).toString());
         soAo =Integer.parseInt(this.tbCauThu.getValueAt(this.tbCauThu.getSelectedRow(), 3).toString());  
         NgaySinh= this.tbCauThu.getValueAt(this.tbCauThu.getSelectedRow(), 4).toString();
         BanThang =Integer.parseInt(this.tbCauThu.getValueAt(this.tbCauThu.getSelectedRow(), 5).toString());  
@@ -219,7 +224,7 @@ private void LoadData()
         if(cf==JOptionPane.YES_OPTION)
         {
             
-         String name= this.tbCauThu.getValueAt(this.tbCauThu.getSelectedRow(), 1).toString();
+         int name= Integer.parseInt(this.tbCauThu.getValueAt(this.tbCauThu.getSelectedRow(), 0).toString());
            Cauthu ct=ctd.load(name);
            
             if(this.ctd.delete(ct))
@@ -233,9 +238,15 @@ private void LoadData()
         }
     }//GEN-LAST:event_BtnXoaActionPerformed
 
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        SuaTopGhiBan stgb= new SuaTopGhiBan(maCauThu,tenCauThu,NgaySinh,Vitri,soAo,BanThang,TheVang, TheDo);
+        stgb.setVisible(true);
+    }//GEN-LAST:event_btnSuaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnXoa;
+    private javax.swing.JButton btnSua;
     private java.util.List<bongda1.pkg0.Cauthu> cauthuList;
     private javax.persistence.Query cauthuQuery;
     private java.util.List<bongda1.pkg0.Doibong> doibongList;
@@ -243,7 +254,6 @@ private void LoadData()
     private javax.persistence.Query doibongQuery;
     private javax.persistence.Query doibongQuery1;
     private javax.persistence.EntityManager entityManager;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<String> jComboBox1;

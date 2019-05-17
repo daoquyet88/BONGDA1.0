@@ -50,11 +50,11 @@ public class CauThuDAO {
     }
 
    
-    public Cauthu load(String ct) 
+    public Cauthu load(int ct) 
     {
      Session session=HibernateUtil.getSessionFactory().getCurrentSession();
      Transaction transaction=session.beginTransaction();
-     Cauthu cauThu=(Cauthu) session.get(Trongtai.class,ct);
+     Cauthu cauThu=(Cauthu) session.get(Cauthu.class,ct);
      transaction.commit();
      return cauThu;
     }

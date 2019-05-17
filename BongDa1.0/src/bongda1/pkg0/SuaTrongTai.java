@@ -26,6 +26,7 @@ public class SuaTrongTai extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         btnThoat = new javax.swing.JButton();
@@ -37,6 +38,8 @@ public class SuaTrongTai extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         txt_SoTranBat = new javax.swing.JTextField();
         lbMaTrongTai = new javax.swing.JLabel();
+
+        jLabel5.setText("jLabel5");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -89,11 +92,10 @@ public class SuaTrongTai extends javax.swing.JFrame {
                 .addGroup(layout.createSequentialGroup()
                     .addGap(174, 174, 174)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
+                        .addComponent(jLabel1)
+                        .addComponent(jLabel4)
+                        .addComponent(jLabel2)
+                        .addComponent(jLabel3)
                         .addGroup(layout.createSequentialGroup()
                             .addGap(102, 102, 102)
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -215,6 +217,7 @@ public class SuaTrongTai extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel lbMaTrongTai;
     private javax.swing.JTextField txtNgaySinh;
