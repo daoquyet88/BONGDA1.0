@@ -3,6 +3,7 @@ package bongda1.pkg0;
 
 import dao.CauThuDAO;
 import entities.Cauthu;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -12,6 +13,17 @@ import javax.swing.table.DefaultTableModel;
 public class TopGhiBanWindow extends javax.swing.JPanel {
 
     CauThuDAO ctd=new CauThuDAO();
+    public int maCauThu;
+    public String tenCauThu;
+    public String Vitri;
+    public int soAo;
+    public String NgaySinh;
+    public int BanThang;
+    public int TheVang;
+    public int TheDo;
+    
+    
+    
     
     public TopGhiBanWindow() {
         initComponents();
@@ -34,9 +46,9 @@ private void LoadData()
             dtm.addRow(new Object[]{ct.getMaCauThu(),ct.getTenCauThu(),ct.getViTri(),ct.getNgaySinh(),ct.getBanThang(),ct.getTheVang(),ct.getTheDo(),ct.getMaDoiBong()});
             
         }
-        this.tbCauTHu.setModel(dtm);
-        this.tbCauTHu.repaint();
-        this.tbCauTHu.revalidate();
+        this.tbCauThu.setModel(dtm);
+        this.tbCauThu.repaint();
+        this.tbCauThu.revalidate();
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -57,11 +69,11 @@ private void LoadData()
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tbCauTHu = new javax.swing.JTable();
+        tbCauThu = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        BtnXoa = new javax.swing.JButton();
 
         jLabel1.setText("images");
 
@@ -99,7 +111,7 @@ private void LoadData()
 
         jLabel2.setText("images");
 
-        tbCauTHu.setModel(new javax.swing.table.DefaultTableModel(
+        tbCauThu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -110,7 +122,12 @@ private void LoadData()
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(tbCauTHu);
+        tbCauThu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbCauThuMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tbCauThu);
 
         jButton1.setText("Sửa");
 
@@ -118,7 +135,12 @@ private void LoadData()
 
         jButton3.setText("Thêm ");
 
-        jButton4.setText("Xóa");
+        BtnXoa.setText("Xóa");
+        BtnXoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnXoaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -136,7 +158,7 @@ private void LoadData()
                 .addGap(37, 37, 37)
                 .addComponent(jButton1)
                 .addGap(40, 40, 40)
-                .addComponent(jButton4)
+                .addComponent(BtnXoa)
                 .addGap(26, 26, 26)
                 .addComponent(jButton2)
                 .addGap(140, 140, 140))
@@ -153,7 +175,7 @@ private void LoadData()
                     .addComponent(jButton1)
                     .addComponent(jButton2)
                     .addComponent(jButton3)
-                    .addComponent(jButton4))
+                    .addComponent(BtnXoa))
                 .addContainerGap())
         );
 
@@ -181,8 +203,39 @@ private void LoadData()
         bindingGroup.bind();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void tbCauThuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbCauThuMouseClicked
+       maCauThu = Integer.parseInt(this.tbCauThu.getValueAt(this.tbCauThu.getSelectedRow(), 0).toString());
+       tenCauThu= this.tbCauThu.getValueAt(this.tbCauThu.getSelectedRow(), 1).toString();
+       Vitri = this.tbCauThu.getValueAt(this.tbCauThu.getSelectedRow(), 2).toString();
+        soAo =Integer.parseInt(this.tbCauThu.getValueAt(this.tbCauThu.getSelectedRow(), 3).toString());  
+        NgaySinh= this.tbCauThu.getValueAt(this.tbCauThu.getSelectedRow(), 4).toString();
+        BanThang =Integer.parseInt(this.tbCauThu.getValueAt(this.tbCauThu.getSelectedRow(), 5).toString());  
+        TheVang =Integer.parseInt(this.tbCauThu.getValueAt(this.tbCauThu.getSelectedRow(), 6).toString());  
+         TheDo =Integer.parseInt(this.tbCauThu.getValueAt(this.tbCauThu.getSelectedRow(),7).toString());  
+    }//GEN-LAST:event_tbCauThuMouseClicked
+
+    private void BtnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnXoaActionPerformed
+          int cf=JOptionPane.showConfirmDialog(null,"Co chac xoa trong tai ko","xac nhan",JOptionPane.YES_NO_OPTION);
+        if(cf==JOptionPane.YES_OPTION)
+        {
+            
+         String name= this.tbCauThu.getValueAt(this.tbCauThu.getSelectedRow(), 1).toString();
+           Cauthu ct=ctd.load(name);
+           
+            if(this.ctd.delete(ct))
+            {
+               JOptionPane.showMessageDialog(null," xoa thanh cong");
+                LoadData();
+            } else {
+                JOptionPane.showMessageDialog(null," xoa khong thanh cong");
+                
+            }
+        }
+    }//GEN-LAST:event_BtnXoaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnXoa;
     private java.util.List<bongda1.pkg0.Cauthu> cauthuList;
     private javax.persistence.Query cauthuQuery;
     private java.util.List<bongda1.pkg0.Doibong> doibongList;
@@ -193,7 +246,6 @@ private void LoadData()
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -201,7 +253,7 @@ private void LoadData()
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tbCauTHu;
+    private javax.swing.JTable tbCauThu;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }
