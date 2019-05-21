@@ -70,9 +70,7 @@ private void LoadData()
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbCauThu = new javax.swing.JTable();
-        btnSua = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         BtnXoa = new javax.swing.JButton();
 
         jLabel1.setText("images");
@@ -129,16 +127,7 @@ private void LoadData()
         });
         jScrollPane1.setViewportView(tbCauThu);
 
-        btnSua.setText("Sửa");
-        btnSua.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSuaActionPerformed(evt);
-            }
-        });
-
         jButton2.setText("Report");
-
-        jButton3.setText("Thêm ");
 
         BtnXoa.setText("Xóa");
         BtnXoa.addActionListener(new java.awt.event.ActionListener() {
@@ -159,10 +148,6 @@ private void LoadData()
                 .addContainerGap(26, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3)
-                .addGap(37, 37, 37)
-                .addComponent(btnSua)
-                .addGap(40, 40, 40)
                 .addComponent(BtnXoa)
                 .addGap(26, 26, 26)
                 .addComponent(jButton2)
@@ -177,9 +162,7 @@ private void LoadData()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSua)
                     .addComponent(jButton2)
-                    .addComponent(jButton3)
                     .addComponent(BtnXoa))
                 .addContainerGap())
         );
@@ -238,15 +221,9 @@ private void LoadData()
         }
     }//GEN-LAST:event_BtnXoaActionPerformed
 
-    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
-        SuaTopGhiBan stgb= new SuaTopGhiBan(maCauThu,tenCauThu,NgaySinh,Vitri,soAo,BanThang,TheVang, TheDo);
-        stgb.setVisible(true);
-    }//GEN-LAST:event_btnSuaActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnXoa;
-    private javax.swing.JButton btnSua;
     private java.util.List<bongda1.pkg0.Cauthu> cauthuList;
     private javax.persistence.Query cauthuQuery;
     private java.util.List<bongda1.pkg0.Doibong> doibongList;
@@ -255,7 +232,6 @@ private void LoadData()
     private javax.persistence.Query doibongQuery1;
     private javax.persistence.EntityManager entityManager;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
