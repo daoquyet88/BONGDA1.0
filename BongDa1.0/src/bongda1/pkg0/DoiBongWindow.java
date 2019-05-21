@@ -66,8 +66,8 @@ CauThuDAO ctd=new CauThuDAO();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbcauthu = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnSua = new javax.swing.JButton();
+        btnXoa = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
@@ -94,16 +94,26 @@ CauThuDAO ctd=new CauThuDAO();
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tbcauthu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbcauthuMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbcauthu);
 
         jButton1.setText("Thêm");
 
-        jButton2.setText("Sửa");
-
-        jButton3.setText("Xóa");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnSua.setText("Sửa");
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnSuaActionPerformed(evt);
+            }
+        });
+
+        btnXoa.setText("Xóa");
+        btnXoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaActionPerformed(evt);
             }
         });
 
@@ -138,9 +148,9 @@ CauThuDAO ctd=new CauThuDAO();
                         .addGap(589, 589, 589)
                         .addComponent(jButton1)
                         .addGap(84, 84, 84)
-                        .addComponent(jButton2)
+                        .addComponent(btnSua)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3))
+                        .addComponent(btnXoa))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -194,8 +204,8 @@ CauThuDAO ctd=new CauThuDAO();
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton1)
-                            .addComponent(jButton2)
-                            .addComponent(jButton3))
+                            .addComponent(btnSua)
+                            .addComponent(btnXoa))
                         .addGap(43, 43, 43))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -213,7 +223,7 @@ CauThuDAO ctd=new CauThuDAO();
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         int cf=JOptionPane.showConfirmDialog(null,"Co chac xoa trong tai ko","xac nhan",JOptionPane.YES_NO_OPTION);
         if(cf==JOptionPane.YES_OPTION)
         {
@@ -230,13 +240,29 @@ CauThuDAO ctd=new CauThuDAO();
                 
             }
         }
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnXoaActionPerformed
+
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+       SuaTopGhiBan stgb= new SuaTopGhiBan(maCauThu,tenCauThu,NgaySinh,Vitri,soAo,BanThang,TheVang, TheDo);
+        stgb.setVisible(true);
+    }//GEN-LAST:event_btnSuaActionPerformed
+
+    private void tbcauthuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbcauthuMouseClicked
+        maCauThu = Integer.parseInt(this.tbcauthu.getValueAt(this.tbcauthu.getSelectedRow(), 0).toString());
+        tenCauThu= this.tbcauthu.getValueAt(this.tbcauthu.getSelectedRow(), 1).toString();
+        Vitri = Integer.parseInt(this.tbcauthu.getValueAt(this.tbcauthu.getSelectedRow(), 2).toString());
+        soAo =Integer.parseInt(this.tbcauthu.getValueAt(this.tbcauthu.getSelectedRow(), 3).toString());  
+        NgaySinh= this.tbcauthu.getValueAt(this.tbcauthu.getSelectedRow(), 4).toString();
+        BanThang =Integer.parseInt(this.tbcauthu.getValueAt(this.tbcauthu.getSelectedRow(), 5).toString());  
+        TheVang =Integer.parseInt(this.tbcauthu.getValueAt(this.tbcauthu.getSelectedRow(), 6).toString());  
+        TheDo =Integer.parseInt(this.tbcauthu.getValueAt(this.tbcauthu.getSelectedRow(),7).toString()); 
+    }//GEN-LAST:event_tbcauthuMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnSua;
+    private javax.swing.JButton btnXoa;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
