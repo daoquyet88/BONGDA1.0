@@ -71,6 +71,10 @@ public class CauThuDAO {
         transacsion.commit();
         return list_TT;        
     }
+
+    public boolean add(bongda1.pkg0.Cauthu tt) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 
 }
