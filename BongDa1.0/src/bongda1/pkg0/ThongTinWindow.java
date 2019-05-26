@@ -28,7 +28,7 @@ public class ThongTinWindow extends javax.swing.JPanel {
         jTable1 = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
-        btnThemLichDau = new javax.swing.JButton();
+        btnThemlichthidau = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -79,10 +79,10 @@ public class ThongTinWindow extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(jTable2);
 
-        btnThemLichDau.setText("Thêm ");
-        btnThemLichDau.addActionListener(new java.awt.event.ActionListener() {
+        btnThemlichthidau.setText("Thêm lịch thi đấu");
+        btnThemlichthidau.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnThemLichDauActionPerformed(evt);
+                btnThemlichthidauActionPerformed(evt);
             }
         });
 
@@ -157,7 +157,7 @@ public class ThongTinWindow extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addComponent(btnThemLichDau)
+                        .addComponent(btnThemlichthidau)
                         .addGap(41, 41, 41)
                         .addComponent(jButton2)
                         .addGap(65, 65, 65)
@@ -242,7 +242,7 @@ public class ThongTinWindow extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnThemLichDau)
+                        .addComponent(btnThemlichthidau)
                         .addComponent(jButton3)
                         .addComponent(jButton4))
                     .addComponent(btnCapNhap)
@@ -264,9 +264,12 @@ public class ThongTinWindow extends javax.swing.JPanel {
     
     }//GEN-LAST:event_btnCapNhapActionPerformed
 
-    private void btnThemLichDauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemLichDauActionPerformed
+    private void btnThemlichthidauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemlichthidauActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnThemLichDauActionPerformed
+        Themlichthidau LTD = new Themlichthidau();
+          LTD.setLocation(400, 300);
+          LTD.setVisible(true);
+    }//GEN-LAST:event_btnThemlichthidauActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
@@ -283,7 +286,7 @@ public class ThongTinWindow extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCapNhap;
-    private javax.swing.JButton btnThemLichDau;
+    private javax.swing.JButton btnThemlichthidau;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
