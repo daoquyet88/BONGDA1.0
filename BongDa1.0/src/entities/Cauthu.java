@@ -9,8 +9,8 @@ package entities;
 public class Cauthu  implements java.io.Serializable {
 
 
-     private int maCauThu;
-     private String tenCauThu;
+     public int maCauThu;
+     public String tenCauThu;
      private String viTri;
      private int soAo;
      private String ngaySinh;
