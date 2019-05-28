@@ -1,5 +1,5 @@
 package entities;
-// Generated May 2, 2019 7:38:22 AM by Hibernate Tools 4.3.1
+// Generated May 28, 2019 9:59:44 PM by Hibernate Tools 4.3.1
 
 
 
@@ -9,7 +9,7 @@ package entities;
 public class Trandau  implements java.io.Serializable {
 
 
-     private int maTran;
+     private Integer maTran;
      private int maGiai;
      private String thoiGian;
      private int vong;
@@ -22,8 +22,7 @@ public class Trandau  implements java.io.Serializable {
     public Trandau() {
     }
 
-    public Trandau(int maTran, int maGiai, String thoiGian, int vong, int chuNha, int tySo, int khach, int san, String maTrongTai) {
-       this.maTran = maTran;
+    public Trandau(int maGiai, String thoiGian, int vong, int chuNha, int tySo, int khach, int san, String maTrongTai) {
        this.maGiai = maGiai;
        this.thoiGian = thoiGian;
        this.vong = vong;
@@ -34,11 +33,11 @@ public class Trandau  implements java.io.Serializable {
        this.maTrongTai = maTrongTai;
     }
    
-    public int getMaTran() {
+    public Integer getMaTran() {
         return this.maTran;
     }
     
-    public void setMaTran(int maTran) {
+    public void setMaTran(Integer maTran) {
         this.maTran = maTran;
     }
     public int getMaGiai() {

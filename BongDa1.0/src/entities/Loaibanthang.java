@@ -1,5 +1,5 @@
 package entities;
-// Generated May 2, 2019 7:38:22 AM by Hibernate Tools 4.3.1
+// Generated May 28, 2019 9:59:44 PM by Hibernate Tools 4.3.1
 
 
 
@@ -9,22 +9,21 @@ package entities;
 public class Loaibanthang  implements java.io.Serializable {
 
 
-     private int maLoai;
+     private Integer maLoai;
      private String tenloai;
 
     public Loaibanthang() {
     }
 
-    public Loaibanthang(int maLoai, String tenloai) {
-       this.maLoai = maLoai;
+    public Loaibanthang(String tenloai) {
        this.tenloai = tenloai;
     }
    
-    public int getMaLoai() {
+    public Integer getMaLoai() {
         return this.maLoai;
     }
     
-    public void setMaLoai(int maLoai) {
+    public void setMaLoai(Integer maLoai) {
         this.maLoai = maLoai;
     }
     public String getTenloai() {

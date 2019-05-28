@@ -1,29 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package bongda1.pkg0;
 
 import dao.CauThuDAO;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Admin
- */
 public class DoiBongWindow extends javax.swing.JPanel {
 
-    /**
-     * Creates new form DoiBongWindow
-     */
     public DoiBongWindow() {
         initComponents();
         LoadData();
     }
 CauThuDAO ctd=new CauThuDAO();
-     public int maCauThu;
+    public int maCauThu;
     public String tenCauThu;
     public int Vitri;
     public int soAo;
@@ -143,47 +132,45 @@ CauThuDAO ctd=new CauThuDAO();
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(589, 589, 589)
+                        .addGap(580, 580, 580)
                         .addComponent(jButton1)
                         .addGap(84, 84, 84)
                         .addComponent(btnSua)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnXoa))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 147, Short.MAX_VALUE)
+                        .addComponent(btnXoa)
+                        .addGap(317, 317, 317))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(34, 34, 34)
+                                .addGap(25, 25, 25)
                                 .addComponent(jLabel5)
                                 .addGap(188, 188, 188)
                                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(35, 35, 35)
+                                .addGap(26, 26, 26)
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(9, 9, 9)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel3)
-                                        .addGap(53, 53, 53)
-                                        .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel6)
-                                        .addGap(84, 84, 84)
-                                        .addComponent(jLabel7)
-                                        .addGap(37, 37, 37)
-                                        .addComponent(jButton6)
-                                        .addGap(53, 53, 53)
-                                        .addComponent(jButton7)))))
+                                .addComponent(jLabel3)
+                                .addGap(53, 53, 53)
+                                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addGap(84, 84, 84)
+                                .addComponent(jLabel7)
+                                .addGap(37, 37, 37)
+                                .addComponent(jButton6)
+                                .addGap(53, 53, 53)
+                                .addComponent(jButton7)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(99, 99, 99)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGap(143, 143, 143)
-                                .addComponent(jLabel4)))))
-                .addGap(317, 317, 317))
+                                .addComponent(jLabel4))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(71, 71, 71)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 785, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -243,8 +230,9 @@ CauThuDAO ctd=new CauThuDAO();
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
-       SuaTopGhiBan stgb= new SuaTopGhiBan(maCauThu,tenCauThu,NgaySinh,Vitri,soAo,BanThang,TheVang, TheDo);
-        stgb.setVisible(true);
+       
+        SuaCauThu sct=new SuaCauThu(maCauThu);
+        sct.setVisible(true);
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void tbcauthuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbcauthuMouseClicked

@@ -1,5 +1,5 @@
 package entities;
-// Generated May 2, 2019 7:38:22 AM by Hibernate Tools 4.3.1
+// Generated May 28, 2019 9:59:44 PM by Hibernate Tools 4.3.1
 
 
 
@@ -9,24 +9,23 @@ package entities;
 public class Giaidau  implements java.io.Serializable {
 
 
-     private int maGiai;
+     private Integer maGiai;
      private String tenGiai;
      private String thoiGian;
 
     public Giaidau() {
     }
 
-    public Giaidau(int maGiai, String tenGiai, String thoiGian) {
-       this.maGiai = maGiai;
+    public Giaidau(String tenGiai, String thoiGian) {
        this.tenGiai = tenGiai;
        this.thoiGian = thoiGian;
     }
    
-    public int getMaGiai() {
+    public Integer getMaGiai() {
         return this.maGiai;
     }
     
-    public void setMaGiai(int maGiai) {
+    public void setMaGiai(Integer maGiai) {
         this.maGiai = maGiai;
     }
     public String getTenGiai() {

@@ -1,5 +1,5 @@
 package entities;
-// Generated May 2, 2019 7:38:22 AM by Hibernate Tools 4.3.1
+// Generated May 28, 2019 9:59:44 PM by Hibernate Tools 4.3.1
 
 
 
@@ -9,7 +9,7 @@ package entities;
 public class Qd  implements java.io.Serializable {
 
 
-     private int maQuyDinh;
+     private Integer maQuyDinh;
      private String tenLuat;
      private Integer numberMax;
      private Integer numberMin;
@@ -22,12 +22,10 @@ public class Qd  implements java.io.Serializable {
     }
 
 	
-    public Qd(int maQuyDinh, String tenLuat) {
-        this.maQuyDinh = maQuyDinh;
+    public Qd(String tenLuat) {
         this.tenLuat = tenLuat;
     }
-    public Qd(int maQuyDinh, String tenLuat, Integer numberMax, Integer numberMin, Integer thang, Integer hoa, Integer thua, Integer uutienxephang) {
-       this.maQuyDinh = maQuyDinh;
+    public Qd(String tenLuat, Integer numberMax, Integer numberMin, Integer thang, Integer hoa, Integer thua, Integer uutienxephang) {
        this.tenLuat = tenLuat;
        this.numberMax = numberMax;
        this.numberMin = numberMin;
@@ -37,11 +35,11 @@ public class Qd  implements java.io.Serializable {
        this.uutienxephang = uutienxephang;
     }
    
-    public int getMaQuyDinh() {
+    public Integer getMaQuyDinh() {
         return this.maQuyDinh;
     }
     
-    public void setMaQuyDinh(int maQuyDinh) {
+    public void setMaQuyDinh(Integer maQuyDinh) {
         this.maQuyDinh = maQuyDinh;
     }
     public String getTenLuat() {

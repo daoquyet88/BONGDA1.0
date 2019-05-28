@@ -1,5 +1,5 @@
 package entities;
-// Generated May 2, 2019 7:38:22 AM by Hibernate Tools 4.3.1
+// Generated May 28, 2019 9:59:44 PM by Hibernate Tools 4.3.1
 
 
 
@@ -9,22 +9,21 @@ package entities;
 public class Vong  implements java.io.Serializable {
 
 
-     private int vong;
+     private Integer vong;
      private String tenVong;
 
     public Vong() {
     }
 
-    public Vong(int vong, String tenVong) {
-       this.vong = vong;
+    public Vong(String tenVong) {
        this.tenVong = tenVong;
     }
    
-    public int getVong() {
+    public Integer getVong() {
         return this.vong;
     }
     
-    public void setVong(int vong) {
+    public void setVong(Integer vong) {
         this.vong = vong;
     }
     public String getTenVong() {

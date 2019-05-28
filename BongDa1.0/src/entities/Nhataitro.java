@@ -1,5 +1,5 @@
 package entities;
-// Generated May 2, 2019 7:38:22 AM by Hibernate Tools 4.3.1
+// Generated May 28, 2019 9:59:44 PM by Hibernate Tools 4.3.1
 
 
 
@@ -9,24 +9,23 @@ package entities;
 public class Nhataitro  implements java.io.Serializable {
 
 
-     private int maNhaTaiTro;
+     private Integer maNhaTaiTro;
      private String tenNhaTaiTro;
      private String hinhThuc;
 
     public Nhataitro() {
     }
 
-    public Nhataitro(int maNhaTaiTro, String tenNhaTaiTro, String hinhThuc) {
-       this.maNhaTaiTro = maNhaTaiTro;
+    public Nhataitro(String tenNhaTaiTro, String hinhThuc) {
        this.tenNhaTaiTro = tenNhaTaiTro;
        this.hinhThuc = hinhThuc;
     }
    
-    public int getMaNhaTaiTro() {
+    public Integer getMaNhaTaiTro() {
         return this.maNhaTaiTro;
     }
     
-    public void setMaNhaTaiTro(int maNhaTaiTro) {
+    public void setMaNhaTaiTro(Integer maNhaTaiTro) {
         this.maNhaTaiTro = maNhaTaiTro;
     }
     public String getTenNhaTaiTro() {

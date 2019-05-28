@@ -1,5 +1,5 @@
 package entities;
-// Generated May 2, 2019 7:38:22 AM by Hibernate Tools 4.3.1
+// Generated May 28, 2019 9:59:44 PM by Hibernate Tools 4.3.1
 
 
 
@@ -9,7 +9,7 @@ package entities;
 public class Doibong  implements java.io.Serializable {
 
 
-     private int maDoiBong;
+     private Integer maDoiBong;
      private String tenDoiBong;
      private String hinhAnh;
      private String huanLuanVien;
@@ -19,8 +19,7 @@ public class Doibong  implements java.io.Serializable {
     public Doibong() {
     }
 
-    public Doibong(int maDoiBong, String tenDoiBong, String hinhAnh, String huanLuanVien, String ngaySinh, String sanNha) {
-       this.maDoiBong = maDoiBong;
+    public Doibong(String tenDoiBong, String hinhAnh, String huanLuanVien, String ngaySinh, String sanNha) {
        this.tenDoiBong = tenDoiBong;
        this.hinhAnh = hinhAnh;
        this.huanLuanVien = huanLuanVien;
@@ -28,11 +27,11 @@ public class Doibong  implements java.io.Serializable {
        this.sanNha = sanNha;
     }
    
-    public int getMaDoiBong() {
+    public Integer getMaDoiBong() {
         return this.maDoiBong;
     }
     
-    public void setMaDoiBong(int maDoiBong) {
+    public void setMaDoiBong(Integer maDoiBong) {
         this.maDoiBong = maDoiBong;
     }
     public String getTenDoiBong() {

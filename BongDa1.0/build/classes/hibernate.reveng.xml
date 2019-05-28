@@ -40,17 +40,18 @@ made subject to such option by the copyright holder.
 Contributor(s):
 -->
 <hibernate-reverse-engineering>
-  <schema-selection match-catalog="dbbongda2"/>
-  <table-filter match-name="cauthu"/>
-  <table-filter match-name="loaibanthang"/>
+  <schema-selection match-catalog="dbbongdanew"/>
+  <table-filter match-name="santhidau"/>
   <table-filter match-name="doibong"/>
-  <table-filter match-name="qd"/>
-  <table-filter match-name="nguoidung"/>
-  <table-filter match-name="giaidau"/>
   <table-filter match-name="nhataitro"/>
-  <table-filter match-name="vong"/>
   <table-filter match-name="xemhang"/>
-  <table-filter match-name="trandau"/>
   <table-filter match-name="chitiettrandau"/>
+  <table-filter match-name="trandau"/>
   <table-filter match-name="trongtai"/>
+  <table-filter match-name="giaidau"/>
+  <table-filter match-name="nguoidung"/>
+  <table-filter match-name="qd"/>
+  <table-filter match-name="loaibanthang"/>
+  <table-filter match-name="vong"/>
+  <table-filter match-name="cauthu"/>
 </hibernate-reverse-engineering>

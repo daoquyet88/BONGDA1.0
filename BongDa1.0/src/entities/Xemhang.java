@@ -1,5 +1,5 @@
 package entities;
-// Generated May 2, 2019 7:38:22 AM by Hibernate Tools 4.3.1
+// Generated May 28, 2019 9:59:44 PM by Hibernate Tools 4.3.1
 
 
 
@@ -9,7 +9,7 @@ package entities;
 public class Xemhang  implements java.io.Serializable {
 
 
-     private int maDoiBong;
+     private Integer maDoiBong;
      private int tranThang;
      private int tranHoa;
      private int tranBai;
@@ -21,8 +21,7 @@ public class Xemhang  implements java.io.Serializable {
     public Xemhang() {
     }
 
-    public Xemhang(int maDoiBong, int tranThang, int tranHoa, int tranBai, int banThang, int banBai, int hieuSo, int diem) {
-       this.maDoiBong = maDoiBong;
+    public Xemhang(int tranThang, int tranHoa, int tranBai, int banThang, int banBai, int hieuSo, int diem) {
        this.tranThang = tranThang;
        this.tranHoa = tranHoa;
        this.tranBai = tranBai;
@@ -32,11 +31,11 @@ public class Xemhang  implements java.io.Serializable {
        this.diem = diem;
     }
    
-    public int getMaDoiBong() {
+    public Integer getMaDoiBong() {
         return this.maDoiBong;
     }
     
-    public void setMaDoiBong(int maDoiBong) {
+    public void setMaDoiBong(Integer maDoiBong) {
         this.maDoiBong = maDoiBong;
     }
     public int getTranThang() {

@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated May 2, 2019 7:38:23 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated May 28, 2019 9:59:45 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="entities.Doibong" table="doibong" catalog="dbbongda2" optimistic-lock="version">
-        <id name="maDoiBong" type="int">
+    <class name="entities.Doibong" table="doibong" catalog="dbbongdanew" optimistic-lock="version">
+        <id name="maDoiBong" type="java.lang.Integer">
             <column name="MaDoiBong" />
-            <generator class="assigned" />
+            <generator class="identity" />
         </id>
         <property name="tenDoiBong" type="string">
             <column name="TenDoiBong" length="200" not-null="true" />

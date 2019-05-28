@@ -1,5 +1,5 @@
 package entities;
-// Generated May 2, 2019 7:38:22 AM by Hibernate Tools 4.3.1
+// Generated May 28, 2019 9:59:44 PM by Hibernate Tools 4.3.1
 
 
 
@@ -9,8 +9,8 @@ package entities;
 public class Cauthu  implements java.io.Serializable {
 
 
-     public int maCauThu;
-     public String tenCauThu;
+     private Integer maCauThu;
+     private String tenCauThu;
      private String viTri;
      private int soAo;
      private String ngaySinh;
@@ -22,8 +22,7 @@ public class Cauthu  implements java.io.Serializable {
     public Cauthu() {
     }
 
-    public Cauthu(int maCauThu, String tenCauThu, String viTri, int soAo, String ngaySinh, int banThang, int theVang, int theDo,int maDoiBong) {
-       this.maCauThu = maCauThu;
+    public Cauthu(String tenCauThu, String viTri, int soAo, String ngaySinh, int banThang, int theVang, int theDo, int maDoiBong) {
        this.tenCauThu = tenCauThu;
        this.viTri = viTri;
        this.soAo = soAo;
@@ -31,15 +30,14 @@ public class Cauthu  implements java.io.Serializable {
        this.banThang = banThang;
        this.theVang = theVang;
        this.theDo = theDo;
+       this.maDoiBong = maDoiBong;
     }
    
-    public int getMaCauThu() {
+    public Integer getMaCauThu() {
         return this.maCauThu;
     }
-     public int getMaDoiBong() {
-        return this.maDoiBong;
-    }
-    public void setMaCauThu(int maCauThu) {
+    
+    public void setMaCauThu(Integer maCauThu) {
         this.maCauThu = maCauThu;
     }
     public String getTenCauThu() {
@@ -48,9 +46,6 @@ public class Cauthu  implements java.io.Serializable {
     
     public void setTenCauThu(String tenCauThu) {
         this.tenCauThu = tenCauThu;
-    }
-    public void setMaDoiBong(int maDoiBong) {
-        this.maDoiBong=maDoiBong;
     }
     public String getViTri() {
         return this.viTri;
@@ -93,6 +88,13 @@ public class Cauthu  implements java.io.Serializable {
     
     public void setTheDo(int theDo) {
         this.theDo = theDo;
+    }
+    public int getMaDoiBong() {
+        return this.maDoiBong;
+    }
+    
+    public void setMaDoiBong(int maDoiBong) {
+        this.maDoiBong = maDoiBong;
     }
 
 
