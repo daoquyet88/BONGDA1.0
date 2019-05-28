@@ -50,13 +50,13 @@ public class CauThuDAO {
     }
 
    
-    public Cauthu load(String ct) 
+    public Cauthu load(int ct) 
     {
-     Session session=HibernateUtil.getSessionFactory().getCurrentSession();
-     Transaction transaction=session.beginTransaction();
-     Cauthu cauThu=(Cauthu) session.get(Trongtai.class,ct);
-     transaction.commit();
-     return cauThu;
+        Session session=HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction transaction=session.beginTransaction();
+        Cauthu cauThu=(Cauthu) session.get(Cauthu.class,ct);
+        transaction.commit();
+        return cauThu;
     }
 
     // tim kiem boi ma cau thu
@@ -71,7 +71,8 @@ public class CauThuDAO {
         transacsion.commit();
         return list_TT;        
     }
-    // menh de where
+   
+ // menh de where
     public List<Cauthu> load_danhSachDK(String hql) 
     {
         Session session =HibernateUtil.getSessionFactory().getCurrentSession();
@@ -83,23 +84,21 @@ public class CauThuDAO {
         transacsion.commit();
         return list_TT;        
     }
-    public boolean updateDK(String hql,int soBanThang) 
-    {
-        Session session =HibernateUtil.getSessionFactory().getCurrentSession();
-        Transaction transacsion=session.beginTransaction();
-        try{
-        // lenh hql
-       // String hql="from Cauthu";
-        Query query=session.createQuery(hql);
-        query.setParameter("banThang",soBanThang);
-        int result= query.executeUpdate();
-        transacsion.commit();
-        return true;    
-        }
-        catch(Exception e){
-            return false;
-        }
-    }
-    
-
+//    public boolean updateDK(String hql,int soBanThang) 
+//    {
+//        Session session =HibernateUtil.getSessionFactory().getCurrentSession();
+//        Transaction transacsion=session.beginTransaction();
+//        try{
+//        // lenh hql
+//       // String hql="from Cauthu";
+//        Query query=session.createQuery(hql);
+//        query.setParameter("banThang",soBanThang);
+//        int result= query.executeUpdate();
+//        transacsion.commit();
+//        return true;    
+//        }
+//        catch(Exception e){
+//            return false;
+//        }
+//    }
 }
