@@ -102,7 +102,6 @@ public class Themlichthidau extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         cboDoi1 = new javax.swing.JComboBox();
         CboDoi2 = new javax.swing.JComboBox();
-        JDDate = new com.toedter.calendar.JDateChooser();
         txtSan = new javax.swing.JTextField();
         btnAddTD = new javax.swing.JButton();
 
@@ -145,11 +144,6 @@ public class Themlichthidau extends javax.swing.JFrame {
             }
         });
 
-        JDDate.setDate(new java.util.Date(1558452159000L));
-        JDDate.setDateFormatString("dd-MM-yyyy HH:mm:ss");
-        JDDate.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
-        JDDate.setDoubleBuffered(false);
-
         btnAddTD.setText("Thêm");
         btnAddTD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -173,14 +167,13 @@ public class Themlichthidau extends javax.swing.JFrame {
                             .addComponent(jLabel2))
                         .addGap(27, 27, 27)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cboDoi1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cboDoi1, 0, 285, Short.MAX_VALUE)
                             .addComponent(CboDoi2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(JDDate, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
                             .addComponent(txtSan)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(180, 180, 180)
                         .addComponent(btnAddTD)))
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,16 +189,14 @@ public class Themlichthidau extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(CboDoi2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(JDDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addComponent(jLabel4)
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(txtSan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addComponent(btnAddTD)
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
 
         pack();
@@ -332,7 +323,6 @@ public class Themlichthidau extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox CboDoi2;
-    private com.toedter.calendar.JDateChooser JDDate;
     private javax.swing.JButton btnAddTD;
     private javax.swing.JComboBox cboDoi1;
     private javax.swing.JLabel jLabel1;
