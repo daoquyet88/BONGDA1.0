@@ -39,7 +39,13 @@ public class Themlichthidau extends javax.swing.JFrame {
      */
     public Themlichthidau() {
         initComponents();
-        
+        init();
+    }
+    private void init(){
+        loadDoiBong();
+        loadGiaiDau();
+        loadvongdau();
+        loadSandau();
     }
     public class combodoibong{
     int MaDoiBong;
@@ -61,10 +67,75 @@ public class Themlichthidau extends javax.swing.JFrame {
             return TenDoiBong;
         }
     }
+    public class comboGiaiDau{
+    int IDGiai;
+    String TenGiai;
+        public comboGiaiDau(int IDGiai,String TenGiai){
+            IDGiai = IDGiai;
+            TenGiai = TenGiai;
+        }
+        public int getIdGiai()
+        {
+            return IDGiai;
+        }
+        public String getTenGiai()
+        {
+            return TenGiai;
+        }
+        public String toString()
+        {
+            return TenGiai;
+        }
+    }
+    public class comboVongDau{
+    int Idvongdau;
+    String Tenvongdau;
+        public comboVongDau(int Idvongdau,String Tenvongdau){
+            Idvongdau = Idvongdau;
+            Tenvongdau = Tenvongdau;
+        }
+        public int getIDVongDau()
+        {
+            return Idvongdau;
+        }
+        public String getvongdau()
+        {
+            return Tenvongdau;
+        }
+        public String toString()
+        {
+            return Tenvongdau;
+        }
+    }
+    public class comboSandau{
+    int IdSan;
+    String TenSan;
+        public comboSandau(int IdSan,String TenSan){
+            IdSan = IdSan;
+            TenSan = TenSan;
+        }
+        public int getIdSan()
+        {
+            return IdSan;
+        }
+        public String getTenSan()
+        {
+            return TenSan;
+        }
+        public String toString()
+        {
+            return TenSan;
+        }
+    }
     ArrayList<combodoibong> List = new ArrayList<combodoibong>();
+    ArrayList<comboGiaiDau> ListGD = new ArrayList<comboGiaiDau>();
+    ArrayList<comboVongDau> ListVD = new ArrayList<comboVongDau>();
+    ArrayList<comboSandau> ListSTD = new ArrayList<comboSandau>();
     public boolean checkinfomation(){
         try {
-                if(cboDoi1.getSelectedItem().toString().equals("")|| CboDoi2.getSelectedItem().toString().equals("")|| txtSan.getText().equals(""))
+                if(cboDoi1.getSelectedItem().toString().equals("")|| CboDoi2.getSelectedItem().toString().equals("")||
+                   cboGiaiDau.getSelectedItem().toString().equals("") || cboVongDau.getSelectedItem().toString().equals("") ||
+                   cboSan.getSelectedItem().toString().equals(""))
                 {
                       JOptionPane.showMessageDialog(rootPane,"Vui lòng nhập đầy đủ thông tin");
                          return false;
@@ -86,6 +157,132 @@ public class Themlichthidau extends javax.swing.JFrame {
         }
         return -1;
     }
+    public int GetIDComboGiaiDau(String Name){
+        for(int i =0 ;i< ListGD.size() ;i++){
+            if(ListGD.get(i).getTenGiai()== Name)
+                return ListGD.get(i).getIdGiai();
+        }
+        return -1;
+    }
+    public int GetIDComboVongdau(String Name){
+        for(int i =0 ;i< ListVD.size() ;i++){
+            if(ListVD.get(i).getvongdau()== Name)
+                return ListVD.get(i).getIDVongDau();
+        }
+        return -1;
+    }
+    public int GetIDCombodoiSanDau(String Name){
+        for(int i =0 ;i< ListSTD.size() ;i++){
+            if(ListSTD.get(i).getTenSan()== Name)
+                return ListSTD.get(i).getIdSan();
+        }
+        return -1;
+    }
+    public void loadDoiBong(){
+        //load đội bóng
+        try {
+            Class.forName(className);
+            Connection connection = DriverManager.getConnection(url,user,password);
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery("select MaDoiBong,TenDoiBong from doibong");
+            DefaultComboBoxModel Model= new DefaultComboBoxModel(); 
+            DefaultComboBoxModel Model2= new DefaultComboBoxModel(); 
+            while (rs.next()) {
+                // users = new stock_data(rs.getString("name"));
+                // usersList.add(users); 
+                String NameDB =  rs.getString("TenDoiBong");
+                String IdDB = rs.getString("MaDoiBong");
+                //add list
+                List.add(new combodoibong(parseInt(IdDB), NameDB));
+                Model.addElement(NameDB);
+                Model2.addElement(NameDB);
+            }
+            cboDoi1.setModel(Model);
+            CboDoi2.setModel(Model2);
+            rs.close();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Themlichthidau.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Themlichthidau.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //load tran dau
+        //load vong dau
+        //load san dau
+        
+    }
+    public void loadGiaiDau(){
+        try {
+            Class.forName(className);
+            Connection connection = DriverManager.getConnection(url,user,password);
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery("select MaGiai,TenGiai from giaidau");
+            DefaultComboBoxModel Model= new DefaultComboBoxModel(); 
+            while (rs.next()) {
+                // users = new stock_data(rs.getString("name"));
+                // usersList.add(users); 
+                String MaGiai =  rs.getString("MaGiai");
+                String TenGiai = rs.getString("TenGiai");
+                //add list
+                ListGD.add(new comboGiaiDau(parseInt(MaGiai), TenGiai));
+                Model.addElement(TenGiai);
+            }
+            cboGiaiDau.setModel(Model);
+            rs.close();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Themlichthidau.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Themlichthidau.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void loadvongdau(){
+        try {
+            Class.forName(className);
+            Connection connection = DriverManager.getConnection(url,user,password);
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery("select TenVong ,Vong from vong");
+            DefaultComboBoxModel Model= new DefaultComboBoxModel(); 
+            while (rs.next()) {
+                // users = new stock_data(rs.getString("name"));
+                // usersList.add(users); 
+                String TenVong = rs.getString("TenVong");
+                String Vong =  rs.getString("Vong");
+                //add list
+                ListVD.add(new comboVongDau(parseInt(Vong), TenVong));
+                Model.addElement(TenVong);
+            }
+            cboVongDau.setModel(Model);
+            rs.close();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Themlichthidau.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Themlichthidau.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void loadSandau(){
+        //load tran dau
+        try {
+            Class.forName(className);
+            Connection connection = DriverManager.getConnection(url,user,password);
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery("select ID,TenSan from santhidau");
+            DefaultComboBoxModel Model= new DefaultComboBoxModel(); 
+            while (rs.next()) {
+                // users = new stock_data(rs.getString("name"));
+                // usersList.add(users); 
+                String ID =  rs.getString("ID");
+                String TenSan = rs.getString("TenSan");
+                //add list
+                ListSTD.add(new comboSandau(parseInt(ID), TenSan));
+                Model.addElement(TenSan);
+            }
+            cboSan.setModel(Model);
+            rs.close();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Themlichthidau.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Themlichthidau.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -102,8 +299,13 @@ public class Themlichthidau extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         cboDoi1 = new javax.swing.JComboBox();
         CboDoi2 = new javax.swing.JComboBox();
-        txtSan = new javax.swing.JTextField();
         btnAddTD = new javax.swing.JButton();
+        JDDate = new com.toedter.calendar.JDateChooser();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        cboGiaiDau = new javax.swing.JComboBox();
+        cboVongDau = new javax.swing.JComboBox();
+        cboSan = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -151,36 +353,56 @@ public class Themlichthidau extends javax.swing.JFrame {
             }
         });
 
+        JDDate.setDateFormatString("dd/mm/yyyy hh:mm:ss");
+
+        jLabel6.setText("Vòng đấu");
+
+        jLabel7.setText("Giải Đấu");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel5)
                             .addComponent(jLabel4)
                             .addComponent(jLabel3)
-                            .addComponent(jLabel2))
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7))
                         .addGap(27, 27, 27)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cboDoi1, 0, 285, Short.MAX_VALUE)
-                            .addComponent(CboDoi2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtSan)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(JDDate, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(cboVongDau, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cboGiaiDau, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cboDoi1, javax.swing.GroupLayout.Alignment.LEADING, 0, 285, Short.MAX_VALUE)
+                                .addComponent(CboDoi2, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(cboSan, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(180, 180, 180)
+                        .addGap(162, 162, 162)
                         .addComponent(btnAddTD)))
-                .addContainerGap(74, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(cboGiaiDau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(cboVongDau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(cboDoi1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -189,14 +411,16 @@ public class Themlichthidau extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(CboDoi2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel4)
-                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(JDDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(txtSan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cboSan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addComponent(btnAddTD)
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addGap(54, 54, 54))
         );
 
         pack();
@@ -213,9 +437,11 @@ public class Themlichthidau extends javax.swing.JFrame {
             Date date = JDDate.getDate();//cal.getTime(); 
             SimpleDateFormat fr=new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
             String NgayGio = fr.format(date).toString();
-            String San =txtSan.getText();
+            int San =GetIDCombodoiSanDau(cboSan.getSelectedItem().toString());
             int Doi1 =GetIDCombodoiBong(cboDoi1.getSelectedItem().toString());
             int Doi2 =GetIDCombodoiBong(CboDoi2.getSelectedItem().toString());
+            int Giai =GetIDComboGiaiDau(cboGiaiDau.getSelectedItem().toString());
+            int Vong =GetIDComboVongdau(cboVongDau.getSelectedItem().toString());
             if(Doi1 == -1 || Doi2 == -1){
                 JOptionPane.showMessageDialog(rootPane,"Gặp lỗi lấy thông tin đội bóng");
                 return;
@@ -224,12 +450,11 @@ public class Themlichthidau extends javax.swing.JFrame {
             Trandau  tt=new Trandau();
             tt.setChuNha(Doi1);
             tt.setKhach(Doi2);
-            tt.setMaGiai(-1);
-            tt.setMaTran(-1);
+            tt.setMaGiai(Giai);
             tt.setMaTrongTai("-1");
-            tt.setSan(-1);
+            tt.setSan(San);
             tt.setTySo(-1);
-            tt.setVong(-1);
+            tt.setVong(Vong);
             tt.setThoiGian(NgayGio);
             if( tdd.AddTranDau(tt))
             {
@@ -259,30 +484,7 @@ public class Themlichthidau extends javax.swing.JFrame {
     }//GEN-LAST:event_CboDoi2ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        try {
-            Class.forName(className);
-            Connection connection = DriverManager.getConnection(url,user,password);
-            Statement st = connection.createStatement();
-            ResultSet rs = st.executeQuery("select MaDoiBong,TenDoiBong from doibong");
-            DefaultComboBoxModel Model= new DefaultComboBoxModel(); 
-            DefaultComboBoxModel Model2= new DefaultComboBoxModel(); 
-            while (rs.next()) {
-                // users = new stock_data(rs.getString("name"));
-                // usersList.add(users); 
-                String NameDB =  rs.getString("TenDoiBong");
-                String IdDB = rs.getString("MaDoiBong");
-                List.add(new combodoibong(parseInt(IdDB), NameDB));
-                Model.addElement(NameDB);
-                Model2.addElement(NameDB);
-            }
-            cboDoi1.setModel(Model);
-            CboDoi2.setModel(Model2);
-            rs.close();
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Themlichthidau.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(Themlichthidau.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
         
     }//GEN-LAST:event_formWindowOpened
 
@@ -323,13 +525,18 @@ public class Themlichthidau extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox CboDoi2;
+    private com.toedter.calendar.JDateChooser JDDate;
     private javax.swing.JButton btnAddTD;
     private javax.swing.JComboBox cboDoi1;
+    private javax.swing.JComboBox cboGiaiDau;
+    private javax.swing.JComboBox cboSan;
+    private javax.swing.JComboBox cboVongDau;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField txtSan;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     // End of variables declaration//GEN-END:variables
 }
