@@ -46,6 +46,7 @@ public class Themlichthidau extends javax.swing.JFrame {
         loadGiaiDau();
         loadvongdau();
         loadSandau();
+        loadTT();
     }
     public class combodoibong{
     int MaDoiBong;
@@ -67,12 +68,32 @@ public class Themlichthidau extends javax.swing.JFrame {
             return TenDoiBong;
         }
     }
+    public class combotrongtai{
+    String MaTT;
+    String TenTT;
+        public combotrongtai(String MaTrongtai,String TenTrongTai){
+            MaTT = MaTrongtai;
+            TenTT = TenTrongTai;
+        }
+        public String getMaTT()
+        {
+            return MaTT;
+        }
+        public String getTenTT()
+        {
+            return TenTT;
+        }
+        public String toString()
+        {
+            return TenTT;
+        }
+    }
     public class comboGiaiDau{
     int IDGiai;
     String TenGiai;
-        public comboGiaiDau(int IDGiai,String TenGiai){
-            IDGiai = IDGiai;
-            TenGiai = TenGiai;
+        public comboGiaiDau(int IDGiaiDau,String TenGiaiDau){
+            IDGiai = IDGiaiDau;
+            TenGiai = TenGiaiDau;
         }
         public int getIdGiai()
         {
@@ -90,9 +111,9 @@ public class Themlichthidau extends javax.swing.JFrame {
     public class comboVongDau{
     int Idvongdau;
     String Tenvongdau;
-        public comboVongDau(int Idvongdau,String Tenvongdau){
-            Idvongdau = Idvongdau;
-            Tenvongdau = Tenvongdau;
+        public comboVongDau(int Idvong,String Tenvong){
+            Idvongdau = Idvong;
+            Tenvongdau = Tenvong;
         }
         public int getIDVongDau()
         {
@@ -110,9 +131,9 @@ public class Themlichthidau extends javax.swing.JFrame {
     public class comboSandau{
     int IdSan;
     String TenSan;
-        public comboSandau(int IdSan,String TenSan){
-            IdSan = IdSan;
-            TenSan = TenSan;
+        public comboSandau(int IdSandau,String TenSandau){
+            IdSan = IdSandau;
+            TenSan = TenSandau;
         }
         public int getIdSan()
         {
@@ -131,6 +152,7 @@ public class Themlichthidau extends javax.swing.JFrame {
     ArrayList<comboGiaiDau> ListGD = new ArrayList<comboGiaiDau>();
     ArrayList<comboVongDau> ListVD = new ArrayList<comboVongDau>();
     ArrayList<comboSandau> ListSTD = new ArrayList<comboSandau>();
+    ArrayList<combotrongtai> ListTT = new ArrayList<combotrongtai>();
     public boolean checkinfomation(){
         try {
                 if(cboDoi1.getSelectedItem().toString().equals("")|| CboDoi2.getSelectedItem().toString().equals("")||
@@ -178,6 +200,13 @@ public class Themlichthidau extends javax.swing.JFrame {
         }
         return -1;
     }
+    public String GetIDTT(String Name){
+        for(int i =0 ;i< ListTT.size() ;i++){
+            if(ListTT.get(i).getTenTT()== Name)
+                return ListTT.get(i).getMaTT();
+        }
+        return "-1";
+    }
     public void loadDoiBong(){
         //load đội bóng
         try {
@@ -204,11 +233,7 @@ public class Themlichthidau extends javax.swing.JFrame {
             Logger.getLogger(Themlichthidau.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(Themlichthidau.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        //load tran dau
-        //load vong dau
-        //load san dau
-        
+        }      
     }
     public void loadGiaiDau(){
         try {
@@ -223,6 +248,7 @@ public class Themlichthidau extends javax.swing.JFrame {
                 String MaGiai =  rs.getString("MaGiai");
                 String TenGiai = rs.getString("TenGiai");
                 //add list
+                comboGiaiDau a =new comboGiaiDau(parseInt(MaGiai), TenGiai);
                 ListGD.add(new comboGiaiDau(parseInt(MaGiai), TenGiai));
                 Model.addElement(TenGiai);
             }
@@ -283,12 +309,38 @@ public class Themlichthidau extends javax.swing.JFrame {
             Logger.getLogger(Themlichthidau.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    public void loadTT(){
+        //load tran dau
+        try {
+            Class.forName(className);
+            Connection connection = DriverManager.getConnection(url,user,password);
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery("select MaTrongTai,TenTrongTai from trongtai");
+            DefaultComboBoxModel Model= new DefaultComboBoxModel(); 
+            while (rs.next()) {
+                // users = new stock_data(rs.getString("name"));
+                // usersList.add(users); 
+                String ID =  rs.getString("MaTrongTai");
+                String Ten = rs.getString("TenTrongTai");
+                //add list
+                ListTT.add(new combotrongtai(ID, Ten));
+                Model.addElement(Ten);
+            }
+            cboTT.setModel(Model);
+            rs.close();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Themlichthidau.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Themlichthidau.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
      * regenerated by the Form Editor.
      */
     @SuppressWarnings("unchecked")
+    
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -306,6 +358,8 @@ public class Themlichthidau extends javax.swing.JFrame {
         cboGiaiDau = new javax.swing.JComboBox();
         cboVongDau = new javax.swing.JComboBox();
         cboSan = new javax.swing.JComboBox();
+        jLabel8 = new javax.swing.JLabel();
+        cboTT = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -317,9 +371,9 @@ public class Themlichthidau extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("THÊM LỊCH THI ĐẤU");
 
-        jLabel2.setText("Đội 1");
+        jLabel2.setText("Đội nhà");
 
-        jLabel3.setText("Đội 2");
+        jLabel3.setText("Đội Khách");
 
         jLabel4.setText("Ngày-Giờ");
 
@@ -359,42 +413,50 @@ public class Themlichthidau extends javax.swing.JFrame {
 
         jLabel7.setText("Giải Đấu");
 
+        jLabel8.setText("Trọng Tài");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7))
-                        .addGap(27, 27, 27)
+                        .addGap(24, 24, 24)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(JDDate, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(cboVongDau, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cboGiaiDau, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cboDoi1, javax.swing.GroupLayout.Alignment.LEADING, 0, 285, Short.MAX_VALUE)
-                                .addComponent(CboDoi2, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(cboSan, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel8))
+                                .addGap(27, 27, 27)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(cboVongDau, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cboGiaiDau, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cboDoi1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(CboDoi2, javax.swing.GroupLayout.Alignment.LEADING, 0, 285, Short.MAX_VALUE)
+                                    .addComponent(cboTT, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel4))
+                                .addGap(31, 31, 31)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cboSan, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(JDDate, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(162, 162, 162)
+                        .addGap(187, 187, 187)
                         .addComponent(btnAddTD)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(cboGiaiDau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -411,6 +473,10 @@ public class Themlichthidau extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(CboDoi2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(cboTT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addComponent(JDDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -418,15 +484,15 @@ public class Themlichthidau extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(cboSan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
+                .addGap(33, 33, 33)
                 .addComponent(btnAddTD)
-                .addGap(54, 54, 54))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
     private final String className="com.mysql.jdbc.Driver";
-    private final String url="jdbc:mysql://localhost:3306/dbbongda2";
+    private final String url="jdbc:mysql://localhost:3306/dbbongdaNew";
     private final String user="root";
     private final String password="";
     private void btnAddTDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddTDActionPerformed
@@ -442,6 +508,7 @@ public class Themlichthidau extends javax.swing.JFrame {
             int Doi2 =GetIDCombodoiBong(CboDoi2.getSelectedItem().toString());
             int Giai =GetIDComboGiaiDau(cboGiaiDau.getSelectedItem().toString());
             int Vong =GetIDComboVongdau(cboVongDau.getSelectedItem().toString());
+            String TT =GetIDTT(cboTT.getSelectedItem().toString());
             if(Doi1 == -1 || Doi2 == -1){
                 JOptionPane.showMessageDialog(rootPane,"Gặp lỗi lấy thông tin đội bóng");
                 return;
@@ -451,7 +518,7 @@ public class Themlichthidau extends javax.swing.JFrame {
             tt.setChuNha(Doi1);
             tt.setKhach(Doi2);
             tt.setMaGiai(Giai);
-            tt.setMaTrongTai("-1");
+            tt.setMaTrongTai(TT);
             tt.setSan(San);
             tt.setTySo(-1);
             tt.setVong(Vong);
@@ -530,6 +597,7 @@ public class Themlichthidau extends javax.swing.JFrame {
     private javax.swing.JComboBox cboDoi1;
     private javax.swing.JComboBox cboGiaiDau;
     private javax.swing.JComboBox cboSan;
+    private javax.swing.JComboBox cboTT;
     private javax.swing.JComboBox cboVongDau;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -538,5 +606,6 @@ public class Themlichthidau extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     // End of variables declaration//GEN-END:variables
 }
