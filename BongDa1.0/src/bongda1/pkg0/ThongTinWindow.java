@@ -14,7 +14,9 @@ import java.util.List;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 
 public class ThongTinWindow extends javax.swing.JPanel {
@@ -45,7 +47,7 @@ public class ThongTinWindow extends javax.swing.JPanel {
             Class.forName(className);
             Connection connection = DriverManager.getConnection(url,user,password);
             Statement st = connection.createStatement();
-            String Script = "select db1.TenDoiBong doi1,db2.TenDoiBong doi2,td.ThoiGian,std.TenSan from trandau AS td join santhidau AS std ON td.San = std.ID";
+            String Script = "select db1.TenDoiBong doi1,db2.TenDoiBong doi2,td.ThoiGian,std.TenSan,td.MaTran from trandau AS td join santhidau AS std ON td.San = std.ID";
                    Script+= " Join doibong db1 ON td.ChuNha = db1.MaDoiBong Join doibong db2 ON td.Khach = db2.MaDoiBong";
             ResultSet rs = st.executeQuery(Script);
             while (rs.next()) {
@@ -54,6 +56,7 @@ public class ThongTinWindow extends javax.swing.JPanel {
                 row.add(rs.getString("doi2"));
                 row.add(rs.getString("ThoiGian"));
                 row.add(rs.getString("TenSan"));
+                row.add(rs.getString("MaTran"));
                 TModel.addRow(row);
             }
             rs.close();
@@ -80,7 +83,7 @@ public class ThongTinWindow extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         btnThemlichthidau = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnEditLichTD = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         btnCapNhap = new javax.swing.JButton();
@@ -115,6 +118,11 @@ public class ThongTinWindow extends javax.swing.JPanel {
                 "Đội 1", "Đội 2", "Ngày-Giờ", "Sân"
             }
         ));
+        jtLichThiDau.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtLichThiDauMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jtLichThiDau);
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
@@ -137,7 +145,12 @@ public class ThongTinWindow extends javax.swing.JPanel {
             }
         });
 
-        jButton2.setText("Sửa");
+        btnEditLichTD.setText("Sửa");
+        btnEditLichTD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditLichTDActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Xóa");
 
@@ -210,7 +223,7 @@ public class ThongTinWindow extends javax.swing.JPanel {
                         .addGap(10, 10, 10)
                         .addComponent(btnThemlichthidau)
                         .addGap(41, 41, 41)
-                        .addComponent(jButton2)
+                        .addComponent(btnEditLichTD)
                         .addGap(65, 65, 65)
                         .addComponent(jButton3)
                         .addGap(55, 55, 55)
@@ -297,7 +310,7 @@ public class ThongTinWindow extends javax.swing.JPanel {
                         .addComponent(jButton4))
                     .addComponent(btnCapNhap)
                     .addComponent(jButton6)
-                    .addComponent(jButton2))
+                    .addComponent(btnEditLichTD))
                 .addContainerGap(47, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -333,14 +346,26 @@ public class ThongTinWindow extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
 
+    private void btnEditLichTDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditLichTDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEditLichTDActionPerformed
+
+    private void jtLichThiDauMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtLichThiDauMouseClicked
+        // TODO add your handling code here:
+        int index =jtLichThiDau.getSelectedRow();
+        TableModel SubTModel  = jtLichThiDau.getModel();
+        String ChuNha = SubTModel.getValueAt(index, 0).toString();
+        JOptionPane.showMessageDialog(null,ChuNha);
+    }//GEN-LAST:event_jtLichThiDauMouseClicked
+
     private final String className="com.mysql.jdbc.Driver";
     private final String url="jdbc:mysql://localhost:3306/dbbongdaNew";
     private final String user="root";
     private final String password="";
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCapNhap;
+    private javax.swing.JButton btnEditLichTD;
     private javax.swing.JButton btnThemlichthidau;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton6;
