@@ -45,7 +45,7 @@ public class SuaNguoiDung extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         txt_maNguoiDung = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel3.setText("Quản Lý Người Dùng");

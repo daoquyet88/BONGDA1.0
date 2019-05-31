@@ -4,14 +4,18 @@ package bongda1.pkg0;
 import dao.CauThuDAO;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-
+import entities.*;
+import dao.*;
 public class DoiBongWindow extends javax.swing.JPanel {
 
     public DoiBongWindow() {
         initComponents();
         LoadData();
+        LoadCB();
     }
-CauThuDAO ctd=new CauThuDAO();
+    
+    CauThuDAO ctd=new CauThuDAO();
+    DoiBongDao dbDao=new DoiBongDao();
     public int maCauThu;
     public String tenCauThu;
     public int Vitri;
@@ -46,6 +50,14 @@ CauThuDAO ctd=new CauThuDAO();
         this.tbcauthu.repaint();
         this.tbcauthu.revalidate();
     }
+    public void LoadCB()
+    {
+        
+        for(entities.Doibong db : this.dbDao.load_danhSach())
+        {
+            cb_doiBong.addItem(db.getTenDoiBong());
+        }
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -64,7 +76,7 @@ CauThuDAO ctd=new CauThuDAO();
         label1 = new java.awt.Label();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cb_doiBong = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
 
@@ -120,7 +132,34 @@ CauThuDAO ctd=new CauThuDAO();
 
         jLabel5.setText("Đội Bóng");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cb_doiBong.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_doiBongItemStateChanged(evt);
+            }
+        });
+        cb_doiBong.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                cb_doiBongMouseMoved(evt);
+            }
+        });
+        cb_doiBong.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cb_doiBongMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                cb_doiBongMousePressed(evt);
+            }
+        });
+        cb_doiBong.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_doiBongActionPerformed(evt);
+            }
+        });
+        cb_doiBong.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                cb_doiBongPropertyChange(evt);
+            }
+        });
 
         jLabel6.setText("Ngày Sinh");
 
@@ -138,7 +177,7 @@ CauThuDAO ctd=new CauThuDAO();
                         .addComponent(jButton1)
                         .addGap(84, 84, 84)
                         .addComponent(btnSua)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 147, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 148, Short.MAX_VALUE)
                         .addComponent(btnXoa)
                         .addGap(317, 317, 317))
                     .addGroup(layout.createSequentialGroup()
@@ -147,7 +186,7 @@ CauThuDAO ctd=new CauThuDAO();
                                 .addGap(25, 25, 25)
                                 .addComponent(jLabel5)
                                 .addGap(188, 188, 188)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(cb_doiBong, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(26, 26, 26)
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -180,7 +219,7 @@ CauThuDAO ctd=new CauThuDAO();
                         .addGap(27, 27, 27)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(cb_doiBong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addComponent(jLabel4)))
@@ -246,15 +285,39 @@ CauThuDAO ctd=new CauThuDAO();
         TheDo =Integer.parseInt(this.tbcauthu.getValueAt(this.tbcauthu.getSelectedRow(),7).toString()); 
     }//GEN-LAST:event_tbcauthuMouseClicked
 
+    private void cb_doiBongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cb_doiBongMouseClicked
+     // JOptionPane.showMessageDialog(cb_doiBong,cb_doiBong.getSelectedItem()+"con ga con");
+    }//GEN-LAST:event_cb_doiBongMouseClicked
+
+    private void cb_doiBongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_doiBongActionPerformed
+      
+    }//GEN-LAST:event_cb_doiBongActionPerformed
+
+    private void cb_doiBongMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cb_doiBongMousePressed
+        //JOptionPane.showMessageDialog(cb_doiBong,cb_doiBong.getSelectedItem()+"con ga con");
+    }//GEN-LAST:event_cb_doiBongMousePressed
+
+    private void cb_doiBongMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cb_doiBongMouseMoved
+       
+    }//GEN-LAST:event_cb_doiBongMouseMoved
+
+    private void cb_doiBongItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_doiBongItemStateChanged
+       JOptionPane.showMessageDialog(cb_doiBong,cb_doiBong.getSelectedItem()+"con ga con");
+    }//GEN-LAST:event_cb_doiBongItemStateChanged
+
+    private void cb_doiBongPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_cb_doiBongPropertyChange
+    
+    }//GEN-LAST:event_cb_doiBongPropertyChange
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnXoa;
+    private javax.swing.JComboBox<String> cb_doiBong;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
