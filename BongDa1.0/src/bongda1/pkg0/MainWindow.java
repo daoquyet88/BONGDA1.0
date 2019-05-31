@@ -192,7 +192,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNhaTaiTroActionPerformed
 
     private void btnBanToChucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBanToChucActionPerformed
-        // TODO add your handling code here:
+       showPanel(new BanToChucWindow());
     }//GEN-LAST:event_btnBanToChucActionPerformed
 
     /**
