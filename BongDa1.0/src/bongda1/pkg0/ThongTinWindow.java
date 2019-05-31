@@ -5,6 +5,19 @@
  */
 package bongda1.pkg0;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.List;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+
 
 public class ThongTinWindow extends javax.swing.JPanel {
 
@@ -13,8 +26,49 @@ public class ThongTinWindow extends javax.swing.JPanel {
      */
     public ThongTinWindow() {
         initComponents();
+        init();
     }
-
+    public void init(){
+        SetupTable();
+    }
+    public class Lichthidau{
+        
+    }
+    protected DefaultTableModel TModel;
+    private void SetupTable(){
+        TModel = new DefaultTableModel();
+        Vector column = new Vector();
+        column.add("Đội 1");
+        column.add("Đội 2");
+        column.add("Ngày-Giờ");
+        column.add("Sân");
+        TModel.setColumnIdentifiers(column);
+        try {
+            Class.forName(className);
+            Connection connection = DriverManager.getConnection(url,user,password);
+            Statement st = connection.createStatement();
+            String Script = "select db1.TenDoiBong doi1,db2.TenDoiBong doi2,td.ThoiGian,std.TenSan,td.MaTran from trandau AS td join santhidau AS std ON td.San = std.ID";
+                   Script+= " Join doibong db1 ON td.ChuNha = db1.MaDoiBong Join doibong db2 ON td.Khach = db2.MaDoiBong";
+            ResultSet rs = st.executeQuery(Script);
+            while (rs.next()) {
+                Vector row = new Vector();
+                row.add(rs.getString("doi1"));
+                row.add(rs.getString("doi2"));
+                row.add(rs.getString("ThoiGian"));
+                row.add(rs.getString("TenSan"));
+                row.add(rs.getString("MaTran"));
+                TModel.addRow(row);
+            }
+            rs.close();
+            jtLichThiDau.setModel(TModel);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Themlichthidau.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Themlichthidau.class.getName()).log(Level.SEVERE, null, ex);
+        }  
+        
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -25,11 +79,11 @@ public class ThongTinWindow extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jtLichThiDau = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         btnThemlichthidau = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnEditLichTD = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         btnCapNhap = new javax.swing.JButton();
@@ -53,7 +107,7 @@ public class ThongTinWindow extends javax.swing.JPanel {
 
         setName("pnThongTin"); // NOI18N
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jtLichThiDau.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -64,7 +118,12 @@ public class ThongTinWindow extends javax.swing.JPanel {
                 "Đội 1", "Đội 2", "Ngày-Giờ", "Sân"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jtLichThiDau.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtLichThiDauMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jtLichThiDau);
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -86,7 +145,12 @@ public class ThongTinWindow extends javax.swing.JPanel {
             }
         });
 
-        jButton2.setText("Sửa");
+        btnEditLichTD.setText("Sửa");
+        btnEditLichTD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditLichTDActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Xóa");
 
@@ -145,9 +209,9 @@ public class ThongTinWindow extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addComponent(jLabel1)
-                .addGap(119, 119, 119)
+                .addGap(122, 122, 122)
                 .addComponent(jLabel2)
-                .addGap(35, 35, 35)
+                .addGap(32, 32, 32)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -159,7 +223,7 @@ public class ThongTinWindow extends javax.swing.JPanel {
                         .addGap(10, 10, 10)
                         .addComponent(btnThemlichthidau)
                         .addGap(41, 41, 41)
-                        .addComponent(jButton2)
+                        .addComponent(btnEditLichTD)
                         .addGap(65, 65, 65)
                         .addComponent(jButton3)
                         .addGap(55, 55, 55)
@@ -170,8 +234,8 @@ public class ThongTinWindow extends javax.swing.JPanel {
                         .addComponent(jButton6)
                         .addGap(42, 42, 42))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -206,11 +270,10 @@ public class ThongTinWindow extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel3))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -247,7 +310,7 @@ public class ThongTinWindow extends javax.swing.JPanel {
                         .addComponent(jButton4))
                     .addComponent(btnCapNhap)
                     .addComponent(jButton6)
-                    .addComponent(jButton2))
+                    .addComponent(btnEditLichTD))
                 .addContainerGap(47, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -283,11 +346,26 @@ public class ThongTinWindow extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
 
+    private void btnEditLichTDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditLichTDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEditLichTDActionPerformed
 
+    private void jtLichThiDauMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtLichThiDauMouseClicked
+        // TODO add your handling code here:
+        int index =jtLichThiDau.getSelectedRow();
+        TableModel SubTModel  = jtLichThiDau.getModel();
+        String ChuNha = SubTModel.getValueAt(index, 0).toString();
+        JOptionPane.showMessageDialog(null,ChuNha);
+    }//GEN-LAST:event_jtLichThiDauMouseClicked
+
+    private final String className="com.mysql.jdbc.Driver";
+    private final String url="jdbc:mysql://localhost:3306/dbbongdaNew";
+    private final String user="root";
+    private final String password="";
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCapNhap;
+    private javax.swing.JButton btnEditLichTD;
     private javax.swing.JButton btnThemlichthidau;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton6;
@@ -303,7 +381,6 @@ public class ThongTinWindow extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
@@ -311,5 +388,6 @@ public class ThongTinWindow extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
+    private javax.swing.JTable jtLichThiDau;
     // End of variables declaration//GEN-END:variables
 }
