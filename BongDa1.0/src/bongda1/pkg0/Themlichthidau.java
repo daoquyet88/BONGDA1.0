@@ -33,13 +33,28 @@ import javax.swing.plaf.basic.BasicComboBoxRenderer;
  */
 
 public class Themlichthidau extends javax.swing.JFrame {
-
+ThongTinWindow mContaxt;
+String lc ="";
+String mMaTran ="";
     /**
      * Creates new form Themlichthidau
      */
-    public Themlichthidau() {
+public Themlichthidau() {
         initComponents();
         init();
+    }
+    public Themlichthidau(ThongTinWindow Contaxt,String lc,String MaTran) {
+        initComponents();
+        init();
+        mContaxt=Contaxt;
+        mMaTran = MaTran;
+        this.lc = lc;
+        if(lc.equals("Update")){
+            lbBig.setText("Cập Nhật Lịch Thi Đấu");
+            SetValueDoiBong(MaTran);
+        }else{
+            lbBig.setText("Thêm Lịch Thi Đấu");
+        }
     }
     private void init(){
         loadDoiBong();
@@ -171,6 +186,39 @@ public class Themlichthidau extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane,"Gặp lỗi");
                 return false;
             }
+    }
+    private void SetValueDoiBong(String MaTran){
+        try {
+            Class.forName(className);
+            Connection connection = DriverManager.getConnection(url,user,password);
+            Statement st = connection.createStatement();
+            String Query = "Select td.MaTran,td.ThoiGian,TenVong,TenTrongTai,TenSan,TenGiai,db1.TenDoiBong TenDoiBong1,db2.TenDoiBong TenDoiBong2 from (Select * from trandau where MaTran ="+MaTran+") td ";
+            Query+=" join doibong as db1 on td.ChuNha = db1.MaDoiBong join doibong as db2 on db2.MaDoiBong = td.Khach ";
+            Query+=" join giaidau gd on td.MaGiai = gd.MaGiai join vong as v on v.Vong = td.Vong join trongtai tt on tt.MaTrongTai=td.MaTrongTai";
+            Query+=" join santhidau as s on s.ID = td.San";
+            ResultSet rs = st.executeQuery(Query);
+            while (rs.next()) {
+                cboGiaiDau.setSelectedItem(rs.getString("TenGiai"));
+                cboVongDau.setSelectedItem(rs.getString("TenVong"));
+                cboDoi1.setSelectedItem(rs.getString("TenDoiBong1"));
+                CboDoi2.setSelectedItem(rs.getString("TenDoiBong2"));
+                cboTT.setSelectedItem(rs.getString("TenTrongTai"));
+                cboSan.setSelectedItem(rs.getString("TenSan"));
+//                Calendar cal = Calendar.getInstance();
+//                Date date = JDDate.getDate();//cal.getTime(); 
+//                SimpleDateFormat fr=new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+//                String NgayGio = fr.format(date).toString();
+                try {
+                    JDDate.setDate(new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").parse(rs.getString("ThoiGian")));
+                } catch (Exception e) {
+                }
+            }
+            rs.close();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Themlichthidau.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Themlichthidau.class.getName()).log(Level.SEVERE, null, ex);
+        }      
     }
     public int GetIDCombodoiBong(String Name){
         for(int i =0 ;i< List.size() ;i++){
@@ -344,7 +392,7 @@ public class Themlichthidau extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        lbBig = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -368,8 +416,8 @@ public class Themlichthidau extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("THÊM LỊCH THI ĐẤU");
+        lbBig.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbBig.setText("THÊM LỊCH THI ĐẤU");
 
         jLabel2.setText("Đội nhà");
 
@@ -400,7 +448,7 @@ public class Themlichthidau extends javax.swing.JFrame {
             }
         });
 
-        btnAddTD.setText("Thêm");
+        btnAddTD.setText("Save");
         btnAddTD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddTDActionPerformed(evt);
@@ -419,7 +467,7 @@ public class Themlichthidau extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE)
+            .addComponent(lbBig, javax.swing.GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -455,7 +503,7 @@ public class Themlichthidau extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lbBig, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
@@ -523,10 +571,11 @@ public class Themlichthidau extends javax.swing.JFrame {
             tt.setTySo(-1);
             tt.setVong(Vong);
             tt.setThoiGian(NgayGio);
-            if( tdd.AddTranDau(tt))
+             if(lc.equals("Update")){tt.setMaTran(Integer.parseInt(mMaTran));} 
+            if( lc.equals("Insert")?tdd.AddTranDau(tt):tdd.UpdateTranDau(tt))
             {
-                JOptionPane.showMessageDialog(rootPane,"Thêm lịch thi đấu thành công");
-
+                JOptionPane.showMessageDialog(rootPane,"Thao tác thành công");
+                mContaxt.addSuccessful1();
             }
             else
             {
@@ -599,7 +648,6 @@ public class Themlichthidau extends javax.swing.JFrame {
     private javax.swing.JComboBox cboSan;
     private javax.swing.JComboBox cboTT;
     private javax.swing.JComboBox cboVongDau;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -607,5 +655,6 @@ public class Themlichthidau extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel lbBig;
     // End of variables declaration//GEN-END:variables
 }

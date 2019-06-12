@@ -52,6 +52,18 @@ public class TranDauDAO {
             return false;
         }*/
     }
+    public boolean UpdateTranDau(Trandau tt) {
+        try {          
+
+            Session session=HibernateUtil.getSessionFactory().getCurrentSession();
+            Transaction transacsion=session.beginTransaction();
+            session.update(tt);
+            transacsion.commit();
+            return  true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
     public boolean CheckExist(String usename) {
         Session session =HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction transacsion=session.beginTransaction();
