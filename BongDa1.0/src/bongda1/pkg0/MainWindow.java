@@ -37,8 +37,10 @@ public class MainWindow extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 153));
         setName("jFrameMain"); // NOI18N
 
+        pnMenu.setBackground(new java.awt.Color(204, 204, 255));
         pnMenu.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         pnMenu.setToolTipText("Menu Tool Box");
         pnMenu.setName(""); // NOI18N
@@ -124,6 +126,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addGap(25, 25, 25))
         );
 
+        pnMain.setBackground(new java.awt.Color(255, 255, 255));
         pnMain.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         pnMain.setLayout(new java.awt.BorderLayout());
 

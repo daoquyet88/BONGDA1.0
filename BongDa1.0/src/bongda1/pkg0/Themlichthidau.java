@@ -400,7 +400,6 @@ public Themlichthidau() {
         cboDoi1 = new javax.swing.JComboBox();
         CboDoi2 = new javax.swing.JComboBox();
         btnAddTD = new javax.swing.JButton();
-        JDDate = new com.toedter.calendar.JDateChooser();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         cboGiaiDau = new javax.swing.JComboBox();
@@ -455,8 +454,6 @@ public Themlichthidau() {
             }
         });
 
-        JDDate.setDateFormatString("dd/mm/yyyy hh:mm:ss");
-
         jLabel6.setText("Vòng đấu");
 
         jLabel7.setText("Giải Đấu");
@@ -492,9 +489,8 @@ public Themlichthidau() {
                                     .addComponent(jLabel5)
                                     .addComponent(jLabel4))
                                 .addGap(31, 31, 31)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cboSan, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(JDDate, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(cboSan, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(20, 20, 20))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(187, 187, 187)
                         .addComponent(btnAddTD)))
@@ -525,10 +521,8 @@ public Themlichthidau() {
                     .addComponent(jLabel8)
                     .addComponent(cboTT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(JDDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(14, 14, 14)
+                .addComponent(jLabel4)
+                .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(cboSan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -641,7 +635,6 @@ public Themlichthidau() {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox CboDoi2;
-    private com.toedter.calendar.JDateChooser JDDate;
     private javax.swing.JButton btnAddTD;
     private javax.swing.JComboBox cboDoi1;
     private javax.swing.JComboBox cboGiaiDau;

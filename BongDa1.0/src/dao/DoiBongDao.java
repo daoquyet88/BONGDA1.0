@@ -71,12 +71,12 @@ public class DoiBongDao {
     }
    
  // menh de where
-    public List<Doibong> load_danhSachDK(String hql) 
+    public List<Doibong> load_danhSachDK(String tenDoiBong) 
     {
         Session session =HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction transacsion=session.beginTransaction();
         // lenh hql
-       // String hql="from Cauthu";
+       String hql="from Cauthu C,Doibong D  where C.maDoiBong= D.maDoiBong and D.tenDoiBong= : tendoibong";
         Query query=session.createQuery(hql);
         List<Doibong> list_TT=query.list();
         transacsion.commit();

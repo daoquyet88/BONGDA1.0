@@ -29,9 +29,9 @@ public class ThongTinWindow extends javax.swing.JPanel {
     
     public ThongTinWindow(){
         initComponents();
-        init();
+        //init();
     }
-    public void init(){
+    public void ainit(){
         cboGiaDau.setModel(GetModel("Select * From giaidau","TenGiai"));
         cboVongDau.setModel(GetModel("Select * From vong","TenVong"));
         SetupTable(cboGiaDau.getSelectedItem().toString(),cboVongDau.getSelectedItem().toString());

@@ -73,12 +73,34 @@ public class CauThuDAO {
     }
    
  // menh de where
-    public List<Cauthu> load_danhSachDK(String hql) 
+    public List<Cauthu> load_danhSachDK(String tenDoiBong) 
     {
         Session session =HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction transacsion=session.beginTransaction();
         // lenh hql
-       // String hql="from Cauthu";
+        String hql="from Cauthu where maDoibong='"+tenDoiBong+"'";
+        Query query=session.createQuery(hql);
+        List<Cauthu> list_TT=query.list();
+        transacsion.commit();
+        return list_TT;        
+    }
+    public List<Cauthu> load_danhSachDK_db(int maDoiBong) 
+    {
+        Session session =HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction transacsion=session.beginTransaction();
+        // lenh hql
+        String hql="from Cauthu where maDoibong="+maDoiBong;
+        Query query=session.createQuery(hql);
+        List<Cauthu> list_TT=query.list();
+        transacsion.commit();
+        return list_TT;        
+    }
+     public List<Cauthu> load_danhSach_TimKiem(String tenCauThu) 
+    {
+        Session session =HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction transacsion=session.beginTransaction();
+        // lenh hql
+        String hql="from Cauthu where tenCauThu like '%"+tenCauThu+"%'";
         Query query=session.createQuery(hql);
         List<Cauthu> list_TT=query.list();
         transacsion.commit();
