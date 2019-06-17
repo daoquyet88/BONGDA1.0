@@ -7,6 +7,8 @@ import javax.swing.table.DefaultTableModel;
 import entities.*;
 import dao.*;
 import java.awt.Image;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 public class DoiBongWindow extends javax.swing.JPanel {
@@ -134,6 +136,7 @@ public class DoiBongWindow extends javax.swing.JPanel {
         txt_TenCauThu = new javax.swing.JTextField();
         btn_TimKiem = new javax.swing.JButton();
         txtimg = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
 
         jButton5.setText("jButton5");
 
@@ -265,6 +268,13 @@ public class DoiBongWindow extends javax.swing.JPanel {
 
         txtimg.setText("jTextField1");
 
+        jButton2.setText("Report");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -272,7 +282,7 @@ public class DoiBongWindow extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(53, Short.MAX_VALUE)
+                        .addContainerGap(57, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(25, 25, 25)
@@ -297,21 +307,23 @@ public class DoiBongWindow extends javax.swing.JPanel {
                                         .addGap(39, 39, 39)
                                         .addComponent(btn_ThemDB)
                                         .addGap(59, 59, 59)
-                                        .addComponent(btn_xoaDB))))
+                                        .addComponent(btn_xoaDB)
+                                        .addGap(35, 35, 35)
+                                        .addComponent(jButton2))))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addGap(100, 100, 100)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtimg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel7))))
-                        .addGap(87, 87, 87))
+                        .addGap(74, 74, 74))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(38, 38, 38)
                         .addComponent(lb_img, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(42, 42, Short.MAX_VALUE)
+                        .addGap(46, 46, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jButton1)
@@ -361,7 +373,8 @@ public class DoiBongWindow extends javax.swing.JPanel {
                             .addComponent(btn_XoaDB)
                             .addComponent(btn_xoaDB)
                             .addComponent(btn_ThemDB)
-                            .addComponent(btn_CapNhap))
+                            .addComponent(btn_CapNhap)
+                            .addComponent(jButton2))
                         .addGap(43, 43, 43))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lb_img, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -532,6 +545,31 @@ public class DoiBongWindow extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_TenCauThuActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        String path="C:\\Users\\Admin\\Documents\\GitHub\\BONGDA1.0\\BongDa1.0\\src\\bongda1\\pkg0\\report1.jrxml";
+        Connection con =null;
+        try {
+            con=DriverManager.getConnection("jdbc:mysql://localhost/dbbongdanew","root","");
+            //JOptionPane.showMessageDialog(null,"ket noi thanh cong");
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"khong noi thanh cong");
+           
+        }
+   }
+    public Connection layKetNoi(){
+        Connection con =null;
+        try {
+            con=DriverManager.getConnection("jdbc:mysql://localhost/products","root","");
+            //JOptionPane.showMessageDialog(null,"ket noi thanh cong");
+            return con;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"khong noi thanh cong");
+            return null;
+        }
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnXoa;
@@ -542,6 +580,7 @@ public class DoiBongWindow extends javax.swing.JPanel {
     private javax.swing.JButton btn_xoaDB;
     private javax.swing.JComboBox<String> cb_doiBong;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
