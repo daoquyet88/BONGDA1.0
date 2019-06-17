@@ -10,6 +10,18 @@ public class MainWindow extends javax.swing.JFrame {
         initComponents();
          showPanel(new ThongTinWindow());
     }
+    public MainWindow(int quyen) {
+        initComponents();
+         showPanel(new ThongTinWindow());
+         if(quyen==2)
+         {
+             btnBanToChuc.setVisible(false);
+         }
+         else
+         {
+             btnBanToChuc.setVisible(true);
+         }
+    }
     public void showPanel(JPanel panel)
     {
         childPanel=panel;

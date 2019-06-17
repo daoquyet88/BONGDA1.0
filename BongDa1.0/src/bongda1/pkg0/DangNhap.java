@@ -16,6 +16,9 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import dao.*;
+import entities.*;
+import org.hibernate.*;
 
 /**
  *
@@ -23,9 +26,7 @@ import javax.swing.JOptionPane;
  */
 public class DangNhap extends javax.swing.JFrame {
 
-    /**
-     * Creates new form DangNhap
-     */
+    NguoiDungDAO ndDAO=new NguoiDungDAO();
     public DangNhap() {
         initComponents();
     }
@@ -145,68 +146,88 @@ public class DangNhap extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    private final String className="com.mysql.jdbc.Driver";
-    private final String url="jdbc:mysql://localhost:3306/dbbongda2";
-    private final String user="root";
-    private final String password="";
-    private Connection connection;
+//    private final String className="com.mysql.jdbc.Driver";
+//    private final String url="jdbc:mysql://localhost:3306/dbbongda2";
+//    private final String user="root";
+//    private final String password="";
+//    private Connection connection;
     private void txtUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUserNameActionPerformed
 
     private void btnLogginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogginActionPerformed
-        // TODO add your handling code here:
-         try {
-            int flag=1;
-            Class.forName(className);
-            connection=DriverManager.getConnection(url,user,password);
-            Statement st = connection.createStatement();
-            ResultSet rs = st.executeQuery("select * from nguoidung");
-            String user = txtUserName.getText() ;
-            String pass = txtpass.getText() ;
-            DangKyDAO dkd=new DangKyDAO();
-            int Quyen =0;
-           try {
-               String end =  dkd.mahoaMD5(txtpass.getText());
-               while(rs.next())
-            {
-                if(rs.getString(3).equals(txtUserName.getText()) && rs.getString(4).equals(end))
-                {
-                    flag=0;
-                    if(rs.getString(5).equals("0")){
-                       Quyen = 1; 
-                    }
-                    break;
-                }
+        //Nguoidung nd=new Nguoidung();
+        String useName=txtUserName.getText();
+        String passWord=txtpass.getText();
+        //JOptionPane.showMessageDialog(this, passWord+"kq");
+        //String maNguoiDung=txtUserName.getText();
+        try {
+            for(Nguoidung nd : this.ndDAO.load_danhSachND(useName,passWord))
+            {            
+                int quyen=nd.getQuyen();
+                JOptionPane.showMessageDialog(this,"Dang Nhap thanh cong");
+                this.setVisible(false);
+                MainWindow m=new MainWindow(quyen);
+                m.setVisible(rootPaneCheckingEnabled);
             }
-           } catch (NoSuchAlgorithmException ex) {
-               Logger.getLogger(DangNhap.class.getName()).log(Level.SEVERE, null, ex);
-           } catch (UnsupportedEncodingException ex) {
-               Logger.getLogger(DangNhap.class.getName()).log(Level.SEVERE, null, ex);
-           }
             
-            
-            if(flag ==0 ){
-                if(Quyen == 1){
-                     JOptionPane.showMessageDialog(null, "Admin , Đăng nhập thành công"); 
-                     //JFrameGiaoVu d = new JFrameGiaoVu();
-                     //d.show();
-                      this.dispose();
-                }
-                else {
-                    JOptionPane.showMessageDialog(null, "Người dùng "+user+" đăng nhập thành công"); 
-                    this.dispose();
-                }
-
-            }
-            else
-            JOptionPane.showMessageDialog(null, "Sai tài khoản hoặc mật khẩu , vui lòng kiểm tra lại");
-        }catch (SQLException ex) {
-            System.out.println("Error");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this,"Dang nhap that bai");
         }
-        catch (ClassNotFoundException ex) {
-            System.out.println("Class fail");
-        }      
+        
+       
+//        // TODO add your handling code here:
+//         try {
+//            int flag=1;
+//            Class.forName(className);
+//            connection=DriverManager.getConnection(url,user,password);
+//            Statement st = connection.createStatement();
+//            ResultSet rs = st.executeQuery("select * from nguoidung");
+//            String user = txtUserName.getText() ;
+//            String pass = txtpass.getText() ;
+//            DangKyDAO dkd=new DangKyDAO();
+//            int Quyen =0;
+//           try {
+//               String end =  dkd.mahoaMD5(txtpass.getText());
+//               while(rs.next())
+//            {
+//                if(rs.getString(3).equals(txtUserName.getText()) && rs.getString(4).equals(end))
+//                {
+//                    flag=0;
+//                    if(rs.getString(5).equals("0")){
+//                       Quyen = 1; 
+//                    }
+//                    break;
+//                }
+//            }
+//           } catch (NoSuchAlgorithmException ex) {
+//               Logger.getLogger(DangNhap.class.getName()).log(Level.SEVERE, null, ex);
+//           } catch (UnsupportedEncodingException ex) {
+//               Logger.getLogger(DangNhap.class.getName()).log(Level.SEVERE, null, ex);
+//           }
+//            
+//            
+//            if(flag ==0 ){
+//                if(Quyen == 1){
+//                     JOptionPane.showMessageDialog(null, "Admin , Đăng nhập thành công"); 
+//                     //JFrameGiaoVu d = new JFrameGiaoVu();
+//                     //d.show();
+//                      this.dispose();
+//                }
+//                else {
+//                    JOptionPane.showMessageDialog(null, "Người dùng "+user+" đăng nhập thành công"); 
+//                    this.dispose();
+//                }
+//
+//            }
+//            else
+//            JOptionPane.showMessageDialog(null, "Sai tài khoản hoặc mật khẩu , vui lòng kiểm tra lại");
+//        }catch (SQLException ex) {
+//            System.out.println("Error");
+//        }
+//        catch (ClassNotFoundException ex) {
+//            System.out.println("Class fail");
+//        }      
     }//GEN-LAST:event_btnLogginActionPerformed
 
     private void txtDangKyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDangKyActionPerformed
@@ -228,7 +249,7 @@ public class DangNhap extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[]) throws java.lang.InstantiationException {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -242,8 +263,6 @@ public class DangNhap extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DangNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
             java.util.logging.Logger.getLogger(DangNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(DangNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);

@@ -1,25 +1,19 @@
 
 package dao;
-
 import java.util.*;
 import entities.*;
 import org.hibernate.*;
 
-/**
- * Hibernate Utility class with a convenient method to get Session Factory
- * object.
- *
- * @author Anh Duy
- */
-public class LichThiDauDAO {
-
-   public boolean add(Trandau td) {
+public class VongDAO {
+       
+  
+    public boolean add(Vong tt) {
         try {          
 
             Session session=HibernateUtil.getSessionFactory().getCurrentSession();
             Transaction transacsion=session.beginTransaction();
             session.
-            save(td);
+            save(tt);
             transacsion.commit();
             return  true;
         } catch (Exception e) {
@@ -28,53 +22,55 @@ public class LichThiDauDAO {
     }
 
 
-    public boolean update(Trandau lbt) {
+    public boolean update(Giaidau sinhVien) {
         try {           
         
             Session session =HibernateUtil.getSessionFactory().getCurrentSession();
             Transaction transaction =session.beginTransaction();
-            session.update(lbt);
+            session.update(sinhVien);
             transaction.commit();
             return true;
-        } catch (HibernateException e) {
+        } catch (Exception e) {
             return false;
         }
     }
 
 
-    public boolean delete(Trandau lbt) {
+    public boolean delete(Giaidau tt) {
         try {
    
         Session session =HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction transacsion=session.beginTransaction();
-        session.delete(lbt);
+        session.delete(tt);
         transacsion.commit();
         return true;
-        } catch (HibernateException e) {
+        } catch (Exception e) {
             return false;
         }
     }
 
    
-    public Trandau load(int id_Sinh_vien) 
+    public Giaidau load(String id_Sinh_vien) 
     {
      Session session=HibernateUtil.getSessionFactory().getCurrentSession();
      Transaction transaction=session.beginTransaction();
-     Trandau sinhVien=(Trandau) session.get(Trandau.class,id_Sinh_vien);
+     Giaidau sinhVien=(Giaidau) session.get(Giaidau.class,id_Sinh_vien);
      transaction.commit();
      return sinhVien;
     }
 
  
-    public List<Trandau> load_danhSach() 
+    public List<Vong> load_danhSach() 
     {
         Session session =HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction transacsion=session.beginTransaction();
         // lenh hql
-        String hql="from tranDau";
+        String hql="from Vong";
         Query query=session.createQuery(hql);
-        List<Trandau> list_lbt=query.list();
+        List<Vong> list_TT=query.list();
         transacsion.commit();
-        return list_lbt;        
+        return list_TT;        
     }
+    
+
 }

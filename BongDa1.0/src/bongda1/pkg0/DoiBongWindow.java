@@ -11,6 +11,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 public class DoiBongWindow extends javax.swing.JPanel {
     String imgPath=null;
+    //String dd="C:\\Users\\Admin\\Desktop\\anh\\hinh 3.jpg";
     //Resize image
     public ImageIcon ResizeImage(String imagePath,byte[] pic)
     {
@@ -32,8 +33,7 @@ public class DoiBongWindow extends javax.swing.JPanel {
         initComponents();
         LoadData();
         LoadCB();
-        ImageIcon ic=new ImageIcon("images//aaa.gif");
-        lb_img.setIcon(ic);
+        //lb_imgimg.setIcon(new ImageIcon("C:\\Users\\Admin\\Desktop\\anh\\hinh 3.jpg"));
     }    
     CauThuDAO ctd=new CauThuDAO();
     DoiBongDao dbDao=new DoiBongDao();
@@ -102,14 +102,7 @@ public class DoiBongWindow extends javax.swing.JPanel {
             
             model.addElement(new Doibong(db.getMaDoiBong(),db.getTenDoiBong()));
             //cb_doiBong.addItem(db.getTenDoiBong());
-        }
-         //DefaultComboBoxModel model=new DefaultComboBoxModel();
-//         model.addElement((new Object[]{"con ga con"}).toString());
-//         model.addElement(new Object[]{"con ga con"});
-//         model.addElement(new Object[]{"con ga con"});
-//            model.addElement(new Item(1,"conga"));
-//            model.addElement(new Item(2,"conga"));
-//            model.addElement(new Item(3,"conga"));
+        }       
 
         cb_doiBong.setModel(model);
     }
@@ -140,6 +133,7 @@ public class DoiBongWindow extends javax.swing.JPanel {
         btn_xoaDB = new javax.swing.JButton();
         txt_TenCauThu = new javax.swing.JTextField();
         btn_TimKiem = new javax.swing.JButton();
+        txtimg = new javax.swing.JTextField();
 
         jButton5.setText("jButton5");
 
@@ -184,7 +178,6 @@ public class DoiBongWindow extends javax.swing.JPanel {
             }
         });
 
-        lb_img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/aaa.gif"))); // NOI18N
         lb_img.setText("Hình Ảnh");
 
         btn_CapNhap.setText("Cập Nhập ");
@@ -270,6 +263,8 @@ public class DoiBongWindow extends javax.swing.JPanel {
             }
         });
 
+        txtimg.setText("jTextField1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -279,10 +274,6 @@ public class DoiBongWindow extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(53, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(100, 100, 100)
-                                .addComponent(jLabel7))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(25, 25, 25)
                                 .addComponent(jLabel5)
@@ -306,7 +297,13 @@ public class DoiBongWindow extends javax.swing.JPanel {
                                         .addGap(39, 39, 39)
                                         .addComponent(btn_ThemDB)
                                         .addGap(59, 59, 59)
-                                        .addComponent(btn_xoaDB)))))
+                                        .addComponent(btn_xoaDB))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(100, 100, 100)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtimg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel7))))
                         .addGap(87, 87, 87))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(38, 38, 38)
@@ -382,6 +379,8 @@ public class DoiBongWindow extends javax.swing.JPanel {
                             .addComponent(txt_SanNha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtimg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -449,7 +448,10 @@ public class DoiBongWindow extends javax.swing.JPanel {
             txt_SanNha.setText(db.getSanNha());
             txt_HLV.setText(db.getHuanLuanVien());
             txt_NS.setText(db.getNgaySinh());
-        }
+            String chuoi=db.getHinhAnh();
+            txtimg.setText(chuoi);
+            lb_img.setIcon(new ImageIcon(chuoi));
+       }
     }//GEN-LAST:event_cb_doiBongItemStateChanged
 
     private void cb_doiBongPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_cb_doiBongPropertyChange
@@ -555,5 +557,6 @@ public class DoiBongWindow extends javax.swing.JPanel {
     private javax.swing.JTextField txt_NS;
     private javax.swing.JTextField txt_SanNha;
     private javax.swing.JTextField txt_TenCauThu;
+    private javax.swing.JTextField txtimg;
     // End of variables declaration//GEN-END:variables
 }

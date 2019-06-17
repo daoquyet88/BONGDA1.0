@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dao;
 import java.util.*;
 import entities.*;
@@ -21,6 +16,83 @@ import org.hibernate.SessionFactory;
  * @author Vuong Nguyen
  */
 public class TranDauDAO {
+    public boolean add(Trandau td) {
+        try {          
+
+            Session session=HibernateUtil.getSessionFactory().getCurrentSession();
+            Transaction transacsion=session.beginTransaction();
+            session.
+             save(td);
+            transacsion.commit();
+            return  true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+
+    public boolean update(Trandau td) {
+        try {           
+        
+            Session session =HibernateUtil.getSessionFactory().getCurrentSession();
+            Transaction transaction =session.beginTransaction();
+            session.update(td);
+            transaction.commit();
+            return true;
+        } catch (HibernateException e) {
+            return false;
+        }
+    }
+
+
+    public boolean delete(Trandau td) {
+        try {
+   
+        Session session =HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction transacsion=session.beginTransaction();
+        session.delete(td);
+        transacsion.commit();
+        return true;
+        } catch (HibernateException e) {
+            return false;
+        }
+    }
+
+   
+    public Trandau load(int maTranDau) 
+    {
+     Session session=HibernateUtil.getSessionFactory().getCurrentSession();
+     Transaction transaction=session.beginTransaction();
+     Trandau ntt=(Trandau) session.get(Trandau.class,maTranDau);
+     transaction.commit();
+     return ntt;
+    }
+
+ 
+    public List<Trandau> load_danhSach() 
+    {
+        Session session =HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction transacsion=session.beginTransaction();
+        // lenh hql
+        String hql="from Trandau";
+        Query query=session.createQuery(hql);
+        List<Trandau> list_ntt=query.list();
+        transacsion.commit();
+        return list_ntt;        
+    }
+    public List<Trandau> load_danhSach_DK(int ma) 
+    {
+        Session session =HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction transacsion=session.beginTransaction();
+        // lenh hql
+        String hql="from Trandau where maTran="+ma;
+        Query query=session.createQuery(hql);
+        List<Trandau> list_ntt=query.list();
+        transacsion.commit();
+        return list_ntt;        
+    }
+}
+    /*
 
     private static final SessionFactory sessionFactory;
     
@@ -50,7 +122,7 @@ public class TranDauDAO {
             return  true;
         /*} catch (Exception e) {
             return false;
-        }*/
+        }
     }
     public boolean UpdateTranDau(Trandau tt) {
         try {          
@@ -75,3 +147,4 @@ public class TranDauDAO {
         return Nd.size() <= 0;      
     }
 }
+*/

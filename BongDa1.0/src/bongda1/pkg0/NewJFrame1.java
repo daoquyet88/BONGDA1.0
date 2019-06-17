@@ -1,50 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package bongda1.pkg0;
 import dao.*;
 import entities.*;
 import org.hibernate.*;
 
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
-/**
- *
- * @author Admin
- */
 public class NewJFrame1 extends javax.swing.JFrame {
-
-    DoiBongDao dbDao=new DoiBongDao();
-    /**
-     * Creates new form NewJFrame1
-     */
+    NguoiDungDAO ndDAO=new NguoiDungDAO();
     public NewJFrame1() {
         initComponents();
-        loadCB();
-    }
-
-    public void loadCB()
-    {
         
-        DefaultComboBoxModel model=new DefaultComboBoxModel();
-        
-        for(entities.Doibong db : this.dbDao.load_danhSach())
-        {
-            
-            model.addElement(new Doibong(db.getMaDoiBong(),db.getTenDoiBong()));
-            //cb_doiBong.addItem(db.getTenDoiBong());
-        }
-         //DefaultComboBoxModel model=new DefaultComboBoxModel();
-//         model.addElement((new Object[]{"con ga con"}).toString());
-//         model.addElement(new Object[]{"con ga con"});
-//         model.addElement(new Object[]{"con ga con"});
-//            model.addElement(new Item(1,"conga"));
-//            model.addElement(new Item(2,"conga"));
-//            model.addElement(new Item(3,"conga"));
 
-         cb.setModel(model);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -55,14 +22,16 @@ public class NewJFrame1 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        cb = new javax.swing.JComboBox<>();
+        txt_useName = new javax.swing.JTextField();
+        txt_passWord = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        cb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cb.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cbItemStateChanged(evt);
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -71,25 +40,38 @@ public class NewJFrame1 extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(224, 224, 224)
-                .addComponent(cb, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(319, Short.MAX_VALUE))
+                .addGap(93, 93, 93)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(txt_useName, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
+                        .addComponent(txt_passWord)))
+                .addContainerGap(522, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(108, 108, 108)
-                .addComponent(cb, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(258, Short.MAX_VALUE))
+                .addGap(47, 47, 47)
+                .addComponent(txt_useName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42)
+                .addComponent(txt_passWord, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(85, 85, 85)
+                .addComponent(jButton1)
+                .addContainerGap(160, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cbItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbItemStateChanged
-       String aa=((Doibong)cb.getSelectedItem()).getMaDoiBong()+"";
-       this.setTitle(aa);
-    }//GEN-LAST:event_cbItemStateChanged
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        //Nguoidung nd=new Nguoidung();
+//        String maNguoiDung=txt_useName.getText();
+//        for(entities.Nguoidung nd : this.ndDAO.load_danhSachND(maNguoiDung))
+//        {
+//            JOptionPane.showMessageDialog(this,"ok");
+//        }
+//       
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -125,6 +107,8 @@ public class NewJFrame1 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> cb;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JTextField txt_passWord;
+    private javax.swing.JTextField txt_useName;
     // End of variables declaration//GEN-END:variables
 }

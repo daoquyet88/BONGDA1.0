@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated May 28, 2019 9:59:45 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated Jun 17, 2019 9:36:04 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="entities.Trandau" table="trandau" catalog="dbbongdanew" optimistic-lock="version">
         <id name="maTran" type="java.lang.Integer">
@@ -17,20 +17,29 @@
         <property name="vong" type="int">
             <column name="Vong" not-null="true" />
         </property>
-        <property name="chuNha" type="int">
-            <column name="ChuNha" not-null="true" />
+        <property name="maChuNha" type="int">
+            <column name="MaChuNha" not-null="true" />
         </property>
-        <property name="tySo" type="int">
-            <column name="TySo" not-null="true" />
+        <property name="tenChuNha" type="string">
+            <column name="TenChuNha" length="11" not-null="true" />
         </property>
-        <property name="khach" type="int">
-            <column name="Khach" not-null="true" />
+        <property name="tschuNha" type="string">
+            <column name="TSChuNha" length="11" not-null="true" />
+        </property>
+        <property name="tskhach" type="int">
+            <column name="TSKhach" not-null="true" />
+        </property>
+        <property name="maKhach" type="int">
+            <column name="MaKhach" not-null="true" />
+        </property>
+        <property name="tenDoiKhach" type="string">
+            <column name="TenDoiKhach" length="200" not-null="true" />
         </property>
         <property name="san" type="int">
             <column name="San" not-null="true" />
         </property>
-        <property name="maTrongTai" type="string">
-            <column name="MaTrongTai" length="11" not-null="true" />
+        <property name="maTrongTai" type="int">
+            <column name="MaTrongTai" not-null="true" />
         </property>
     </class>
 </hibernate-mapping>

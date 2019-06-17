@@ -1,5 +1,5 @@
 package entities;
-// Generated May 28, 2019 9:59:44 PM by Hibernate Tools 4.3.1
+// Generated Jun 17, 2019 9:36:03 AM by Hibernate Tools 4.3.1
 
 
 
@@ -13,22 +13,28 @@ public class Trandau  implements java.io.Serializable {
      private int maGiai;
      private String thoiGian;
      private int vong;
-     private int chuNha;
-     private int tySo;
-     private int khach;
+     private int maChuNha;
+     private String tenChuNha;
+     private String tschuNha;
+     private int tskhach;
+     private int maKhach;
+     private String tenDoiKhach;
      private int san;
-     private String maTrongTai;
+     private int maTrongTai;
 
     public Trandau() {
     }
 
-    public Trandau(int maGiai, String thoiGian, int vong, int chuNha, int tySo, int khach, int san, String maTrongTai) {
+    public Trandau(int maGiai, String thoiGian, int vong, int maChuNha, String tenChuNha, String tschuNha, int tskhach, int maKhach, String tenDoiKhach, int san, int maTrongTai) {
        this.maGiai = maGiai;
        this.thoiGian = thoiGian;
        this.vong = vong;
-       this.chuNha = chuNha;
-       this.tySo = tySo;
-       this.khach = khach;
+       this.maChuNha = maChuNha;
+       this.tenChuNha = tenChuNha;
+       this.tschuNha = tschuNha;
+       this.tskhach = tskhach;
+       this.maKhach = maKhach;
+       this.tenDoiKhach = tenDoiKhach;
        this.san = san;
        this.maTrongTai = maTrongTai;
     }
@@ -61,26 +67,47 @@ public class Trandau  implements java.io.Serializable {
     public void setVong(int vong) {
         this.vong = vong;
     }
-    public int getChuNha() {
-        return this.chuNha;
+    public int getMaChuNha() {
+        return this.maChuNha;
     }
     
-    public void setChuNha(int chuNha) {
-        this.chuNha = chuNha;
+    public void setMaChuNha(int maChuNha) {
+        this.maChuNha = maChuNha;
     }
-    public int getTySo() {
-        return this.tySo;
-    }
-    
-    public void setTySo(int tySo) {
-        this.tySo = tySo;
-    }
-    public int getKhach() {
-        return this.khach;
+    public String getTenChuNha() {
+        return this.tenChuNha;
     }
     
-    public void setKhach(int khach) {
-        this.khach = khach;
+    public void setTenChuNha(String tenChuNha) {
+        this.tenChuNha = tenChuNha;
+    }
+    public String getTschuNha() {
+        return this.tschuNha;
+    }
+    
+    public void setTschuNha(String tschuNha) {
+        this.tschuNha = tschuNha;
+    }
+    public int getTskhach() {
+        return this.tskhach;
+    }
+    
+    public void setTskhach(int tskhach) {
+        this.tskhach = tskhach;
+    }
+    public int getMaKhach() {
+        return this.maKhach;
+    }
+    
+    public void setMaKhach(int maKhach) {
+        this.maKhach = maKhach;
+    }
+    public String getTenDoiKhach() {
+        return this.tenDoiKhach;
+    }
+    
+    public void setTenDoiKhach(String tenDoiKhach) {
+        this.tenDoiKhach = tenDoiKhach;
     }
     public int getSan() {
         return this.san;
@@ -89,11 +116,11 @@ public class Trandau  implements java.io.Serializable {
     public void setSan(int san) {
         this.san = san;
     }
-    public String getMaTrongTai() {
+    public int getMaTrongTai() {
         return this.maTrongTai;
     }
     
-    public void setMaTrongTai(String maTrongTai) {
+    public void setMaTrongTai(int maTrongTai) {
         this.maTrongTai = maTrongTai;
     }
 

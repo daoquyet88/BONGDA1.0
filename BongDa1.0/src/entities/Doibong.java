@@ -10,23 +10,16 @@ public class Doibong  implements java.io.Serializable {
      private String ngaySinh;
      private String sanNha;
 
-   
     public Doibong() {
     }
 
-    public Doibong(Integer maDoiBong, String tenDoiBong) {
-        this.maDoiBong = maDoiBong;
-        this.tenDoiBong = tenDoiBong;
-    }
-     
     public Doibong(String tenDoiBong, String hinhAnh, String huanLuanVien, String ngaySinh, String sanNha) {
        this.tenDoiBong = tenDoiBong;
        this.hinhAnh = hinhAnh;
        this.huanLuanVien = huanLuanVien;
        this.ngaySinh = ngaySinh;
        this.sanNha = sanNha;
-    }
-   
+    }    
     public Integer getMaDoiBong() {
         return this.maDoiBong;
     }
@@ -70,11 +63,18 @@ public class Doibong  implements java.io.Serializable {
         this.sanNha = sanNha;
     }
 
+    public Doibong(Integer maDoiBong, String tenDoiBong) {
+        this.maDoiBong = maDoiBong;
+        this.tenDoiBong = tenDoiBong;
+    }
+
     @Override
     public String toString() {
-        return  ""+getTenDoiBong();
+        return  tenDoiBong ;
     }
-    
+
+
+
 
 }
 
