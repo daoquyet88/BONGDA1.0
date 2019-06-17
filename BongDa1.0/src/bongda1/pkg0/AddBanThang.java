@@ -57,7 +57,7 @@ public class AddBanThang extends javax.swing.JFrame {
             cboDoiGhiBan.setSelectedItem(str[1]);
             cboCauThu.setSelectedItem(str[0]);
             cboLoaibanThang.setSelectedItem(str[2]);
-            //jsghiban.setValue(Integer.parseInt(str[3]));
+            jsghiban.setValue(Integer.parseInt(str[3]));
         }
     }
     
@@ -110,6 +110,7 @@ public class AddBanThang extends javax.swing.JFrame {
         cboLoaibanThang = new javax.swing.JComboBox();
         dboSave = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+        jsghiban = new com.toedter.components.JSpinField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -155,9 +156,10 @@ public class AddBanThang extends javax.swing.JFrame {
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(cboCauThu, javax.swing.GroupLayout.Alignment.TRAILING, 0, 223, Short.MAX_VALUE)
+                    .addComponent(cboCauThu, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(cboLoaibanThang, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cboDoiGhiBan, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(cboDoiGhiBan, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jsghiban, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(178, Short.MAX_VALUE)
@@ -182,8 +184,10 @@ public class AddBanThang extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(cboLoaibanThang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jsghiban, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
                 .addComponent(dboSave)
                 .addGap(28, 28, 28))
         );
@@ -248,6 +252,7 @@ public class AddBanThang extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(AddBanThang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -270,6 +275,7 @@ public class AddBanThang extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private com.toedter.components.JSpinField jsghiban;
     // End of variables declaration//GEN-END:variables
 
     

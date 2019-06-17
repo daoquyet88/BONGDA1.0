@@ -41,9 +41,10 @@
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="cboCauThu" alignment="1" pref="223" max="32767" attributes="0"/>
+                  <Component id="cboCauThu" alignment="1" max="32767" attributes="0"/>
                   <Component id="cboLoaibanThang" max="32767" attributes="0"/>
                   <Component id="cboDoiGhiBan" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jsghiban" pref="223" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -75,8 +76,11 @@
                   <Component id="cboLoaibanThang" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jLabel3" min="-2" pref="20" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jLabel3" min="-2" pref="20" max="-2" attributes="0"/>
+                  <Component id="jsghiban" min="-2" pref="28" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
               <Component id="dboSave" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
           </Group>
@@ -141,6 +145,8 @@
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="TH&#xca;M CHI B&#xc0;N TH&#x1eae;NG CHO TR&#x1eac;N &#x110;&#x1ea4;U"/>
       </Properties>
+    </Component>
+    <Component class="com.toedter.components.JSpinField" name="jsghiban">
     </Component>
   </SubComponents>
 </Form>

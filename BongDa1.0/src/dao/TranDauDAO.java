@@ -91,6 +91,58 @@ public class TranDauDAO {
         transacsion.commit();
         return list_ntt;        
     }
+    private static final SessionFactory sessionFactory;
+    
+    static {
+        try {
+            // Create the SessionFactory from standard (hibernate.cfg.xml) 
+            // config file.
+            sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();
+        } catch (Throwable ex) {
+            // Log the exception. 
+            System.err.println("Initial SessionFactory creation failed." + ex);
+            throw new ExceptionInInitializerError(ex);
+        }
+    }
+    
+    public static SessionFactory getSessionFactory() {
+        return sessionFactory;
+    }
+    public boolean AddTranDau(Trandau tt) {
+        try {          
+
+            Session session=HibernateUtil.getSessionFactory().getCurrentSession();
+            Transaction transacsion=session.beginTransaction();
+            session.
+            save(tt);
+            transacsion.commit();
+            return  true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+    public boolean UpdateTranDau(Trandau tt) {
+        try {          
+
+            Session session=HibernateUtil.getSessionFactory().getCurrentSession();
+            Transaction transacsion=session.beginTransaction();
+            session.update(tt);
+            transacsion.commit();
+            return  true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+    public boolean CheckExist(String usename) {
+        Session session =HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction transacsion=session.beginTransaction();
+        // lenh hql
+        String hql="Select nn.ID from nguoidung nn where nn.UseName ='"+usename+"'";
+        Query query=session.createQuery(hql);
+        List<Nguoidung> Nd=query.list();
+        transacsion.commit();
+        return Nd.size() <= 0;      
+    }
 }
     /*
 
