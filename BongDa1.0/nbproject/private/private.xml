@@ -3,17 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Admin/Documents/GitHub/BONGDA1.0/BongDa1.0/src/bongda1/pkg0/Themlichthidau.java</file>
-            <file>file:/C:/Users/Admin/Documents/GitHub/BONGDA1.0/BongDa1.0/src/dao/XepHangDao.java</file>
-            <file>file:/C:/Users/Admin/Documents/GitHub/BONGDA1.0/BongDa1.0/src/bongda1/pkg0/ThongTinWindow.java</file>
-            <file>file:/C:/Users/Admin/Documents/GitHub/BONGDA1.0/BongDa1.0/src/bongda1/pkg0/AddBanThang.java</file>
-            <file>file:/C:/Users/Admin/Documents/GitHub/BONGDA1.0/BongDa1.0/src/dao/DangKyDAO.java</file>
-            <file>file:/C:/Users/Admin/Documents/GitHub/BONGDA1.0/BongDa1.0/src/bongda1/pkg0/SuaLichThiDau.java</file>
-            <file>file:/C:/Users/Admin/Documents/GitHub/BONGDA1.0/BongDa1.0/src/dao/CauThuDAO.java</file>
+            <file>file:/C:/Users/Admin/Documents/GitHub/BONGDA1.0/BongDa1.0/src/hibernate.reveng.xml</file>
+            <file>file:/C:/Users/Admin/Documents/GitHub/BONGDA1.0/BongDa1.0/src/entities/Doibong.java</file>
             <file>file:/C:/Users/Admin/Documents/GitHub/BONGDA1.0/BongDa1.0/src/bongda1/pkg0/DoiBongWindow.java</file>
-            <file>file:/C:/Users/Admin/Documents/GitHub/BONGDA1.0/BongDa1.0/src/dao/TranDauDAO.java</file>
-            <file>file:/C:/Users/Admin/Documents/GitHub/BONGDA1.0/BongDa1.0/src/dao/DoiBongDao.java</file>
-            <file>file:/C:/Users/Admin/Documents/GitHub/BONGDA1.0/BongDa1.0/src/bongda1/pkg0/SuaXepHang.java</file>
+            <file>file:/C:/Users/Admin/Documents/GitHub/BONGDA1.0/BongDa1.0/src/dao/HibernateUtil.java</file>
         </group>
     </open-files>
 </project-private>

@@ -1,5 +1,5 @@
 package entities;
-// Generated Jun 17, 2019 10:57:10 PM by Hibernate Tools 4.3.1
+// Generated Jun 17, 2019 11:57:59 PM by Hibernate Tools 4.3.1
 
 
 
@@ -68,6 +68,16 @@ public class Doibong  implements java.io.Serializable {
     
     public void setSanNha(String sanNha) {
         this.sanNha = sanNha;
+    }
+
+    public Doibong(Integer maDoiBong, String tenDoiBong) {
+        this.maDoiBong = maDoiBong;
+        this.tenDoiBong = tenDoiBong;
+    }
+
+    @Override
+    public String toString() {
+        return tenDoiBong;
     }
 
 

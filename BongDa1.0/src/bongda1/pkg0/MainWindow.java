@@ -187,7 +187,7 @@ public class MainWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLichThiDauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLichThiDauActionPerformed
-        showPanel(new ThongTinWindow());
+       // showPanel(new ThongTinWindow());
     }//GEN-LAST:event_btnLichThiDauActionPerformed
 
     private void btnDoiBongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoiBongActionPerformed

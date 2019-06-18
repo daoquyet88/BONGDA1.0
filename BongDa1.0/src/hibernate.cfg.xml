@@ -46,6 +46,7 @@ Contributor(s):
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/dbbongdanew?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.show_sql">true</property>
+    <property name="hibernate.current_session_context_class">thread</property>
     <mapping resource="entities/Nhataitro.hbm.xml"/>
     <mapping resource="entities/Xemhang.hbm.xml"/>
     <mapping resource="entities/Cauthu.hbm.xml"/>

@@ -11,6 +11,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 public class DoiBongWindow extends javax.swing.JPanel {
     String imgPath=null;
     //String dd="C:\\Users\\Admin\\Desktop\\anh\\hinh 3.jpg";
@@ -551,7 +556,12 @@ public class DoiBongWindow extends javax.swing.JPanel {
         try {
             con=DriverManager.getConnection("jdbc:mysql://localhost/dbbongdanew","root","");
             //JOptionPane.showMessageDialog(null,"ket noi thanh cong");
-            
+            // tao jasperReport
+            JasperReport jr=JasperCompileManager.compileReport(path);
+            // tao jasperPrint
+            JasperPrint jp=JasperFillManager.fillReport(jr,null,con);
+            //Tao jasperView
+            JasperViewer.viewReport(jp);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,"khong noi thanh cong");
            
