@@ -5,6 +5,17 @@ import javax.swing.table.DefaultTableModel;
 import dao.*;
 import org.hibernate.*;
 import entities.*;
+import java.io.File;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 public class TopGhiBanWindow extends javax.swing.JPanel {
 
    public  CauThuDAO ctd=new CauThuDAO();
@@ -98,6 +109,11 @@ public class TopGhiBanWindow extends javax.swing.JPanel {
         });
 
         jButton2.setText("Báo Cáo");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("hinh anh");
 
@@ -160,6 +176,30 @@ public class TopGhiBanWindow extends javax.swing.JPanel {
     private void tb_CauThuMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_CauThuMousePressed
       maCauThu=Integer.parseInt(this.tb_CauThu.getValueAt(this.tb_CauThu.getSelectedRow(), 2).toString());
     }//GEN-LAST:event_tb_CauThuMousePressed
+    JasperDesign jd;
+    JasperReport jr;
+    JasperPrint jp;
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Connection con =null;
+        try {
+            con=DriverManager.getConnection("jdbc:mysql://localhost/dbbongdanew","root","");
+            //JOptionPane.showMessageDialog(null,"ket noi thanh cong");
+            File f=new File("src/reportTop.jrxml");
+            if(f.exists())
+            {
+                //JOptionPane.showMessageDialog(null,"ton tai");
+            }
+            
+            jd =JRXmlLoader.load(f);
+            jr=JasperCompileManager.compileReport(jd);
+            jp=JasperFillManager.fillReport(jr,null,con);
+            JasperViewer.viewReport(jp,false);
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"khong noi thanh cong");
+           
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

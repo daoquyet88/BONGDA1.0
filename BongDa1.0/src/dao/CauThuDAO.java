@@ -65,7 +65,7 @@ public class CauThuDAO {
         Session session =HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction transacsion=session.beginTransaction();
         // lenh hql
-        String hql="from Cauthu";
+        String hql="from Cauthu order by banThang DESC";
         Query query=session.createQuery(hql);
         List<Cauthu> list_TT=query.list();
         transacsion.commit();

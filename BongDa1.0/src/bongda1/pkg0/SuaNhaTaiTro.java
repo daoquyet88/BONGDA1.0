@@ -8,18 +8,19 @@ import org.hibernate.*;
 
 public class SuaNhaTaiTro extends javax.swing.JFrame {
 
+    NhaTaiTroDao nttDAO=new NhaTaiTroDao();
     public SuaNhaTaiTro() {
         initComponents();
        
     }
     public SuaNhaTaiTro(int maNhaTaiTro,String tenNhaTaiTro,String hinhThuc) {
         initComponents();
-        lbMaNhaTaiTro.setText(String.valueOf(maNhaTaiTro));
+        txtMaNhaTT.setText(String.valueOf(maNhaTaiTro));
         txtTenNhaTaiTro.setText(tenNhaTaiTro);
         txtHinhThuc.setText(hinhThuc);
     }
-    Nhataitro ntt=new Nhataitro();
-    int maNTT=ntt.getMaNhaTaiTro();
+//    Nhataitro ntt=new Nhataitro();
+//    int maNTT=ntt.getMaNhaTaiTro();
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -34,11 +35,12 @@ public class SuaNhaTaiTro extends javax.swing.JFrame {
         txtTenNhaTaiTro = new javax.swing.JTextField();
         txtHinhThuc = new javax.swing.JTextField();
         lbMaNhaTaiTro = new javax.swing.JLabel();
+        txtMaNhaTT = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jLabel6.setText("Thêm Mới Trọng Tài :");
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel6.setText("Cập Nhập Nhà Tài Trợ ");
 
         jLabel1.setText("Mã Nhà Tài Trợ :");
 
@@ -60,7 +62,7 @@ public class SuaNhaTaiTro extends javax.swing.JFrame {
 
         jLabel4.setText("Hình Thức Tài Trợ :");
 
-        lbMaNhaTaiTro.setText("jLabel5");
+        txtMaNhaTT.setEditable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -71,15 +73,19 @@ public class SuaNhaTaiTro extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(341, 341, 341)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtHinhThuc, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
-                            .addComponent(txtTenNhaTaiTro, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
-                            .addComponent(lbMaNhaTaiTro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(txtHinhThuc, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtMaNhaTT)
+                                    .addComponent(txtTenNhaTaiTro, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lbMaNhaTaiTro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(288, 288, 288)
                         .addComponent(btnCapNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(68, 68, 68)
                         .addComponent(btnThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(190, Short.MAX_VALUE))
+                .addContainerGap(185, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(174, 174, 174)
@@ -95,9 +101,15 @@ public class SuaNhaTaiTro extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(113, 113, 113)
-                .addComponent(lbMaNhaTaiTro)
-                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(113, 113, 113)
+                        .addComponent(lbMaNhaTaiTro)
+                        .addGap(35, 35, 35))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(txtMaNhaTT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
                 .addComponent(txtTenNhaTaiTro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addComponent(txtHinhThuc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -105,7 +117,7 @@ public class SuaNhaTaiTro extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCapNhap)
                     .addComponent(btnThoat))
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addContainerGap(86, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(39, 39, 39)
@@ -147,9 +159,9 @@ public class SuaNhaTaiTro extends javax.swing.JFrame {
     private void btnCapNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhapActionPerformed
 
         if (kiemTraFile()) {
-            NhaTaiTroDao nttDAO=new NhaTaiTroDao();
+            
             Nhataitro ntt=new Nhataitro();
-            ntt.setMaNhaTaiTro(Integer.parseInt(this.lbMaNhaTaiTro.getText().toString()));
+            ntt.setMaNhaTaiTro(Integer.parseInt(this.txtMaNhaTT.getText().toString()));
             ntt.setTenNhaTaiTro(this.txtTenNhaTaiTro.getText());
             ntt.setHinhThuc(this.txtHinhThuc.getText());
             
@@ -197,6 +209,7 @@ public class SuaNhaTaiTro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel lbMaNhaTaiTro;
     private javax.swing.JTextField txtHinhThuc;
+    private javax.swing.JTextField txtMaNhaTT;
     private javax.swing.JTextField txtTenNhaTaiTro;
     // End of variables declaration//GEN-END:variables
 }

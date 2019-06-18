@@ -24,12 +24,12 @@ public class ThemNhaTaiTro extends javax.swing.JFrame {
  public boolean kiemTraFile()
         {
             try {
-                if(txtMaNhaTaiTro.getText().equals("")||txtTenNhaTaiTro.getText().equals("")||txtHinhThuc.getText().equals(""))
+                if(txtTenNhaTaiTro.getText().equals("")||txtHinhThuc.getText().equals(""))
                 {
                         JOptionPane.showMessageDialog(rootPane,"chưa Nhập đủ thông tin");
                          return false;
                 }
-                Integer.parseInt(txtMaNhaTaiTro.getText());            
+                //Integer.parseInt(txtMaNhaTaiTro.getText());            
                 return true;
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(rootPane,"Mã là 1 số nguyên");
@@ -44,7 +44,6 @@ public class ThemNhaTaiTro extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        txtMaNhaTaiTro = new javax.swing.JTextField();
         txtTenNhaTaiTro = new javax.swing.JTextField();
         txtHinhThuc = new javax.swing.JTextField();
         btnThemNhaTaiTro = new javax.swing.JButton();
@@ -52,7 +51,8 @@ public class ThemNhaTaiTro extends javax.swing.JFrame {
 
         jLabel3.setText("jLabel3");
 
-        jLabel1.setText("Mã Nhà tài Trợ :");
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setText("Thêm Nhà Tài Trợ Giả Đấu");
 
         jLabel2.setText("Tên Nhà Tài Trợ :");
 
@@ -82,41 +82,39 @@ public class ThemNhaTaiTro extends javax.swing.JFrame {
                         .addGap(56, 56, 56)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel4)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGap(57, 57, 57)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(41, 41, 41)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(txtTenNhaTaiTro, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtHinhThuc, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtMaNhaTaiTro, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtHinhThuc, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(114, 114, 114)
+                        .addGap(137, 137, 137)
                         .addComponent(btnThemNhaTaiTro, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(62, 62, 62)
-                        .addComponent(btnThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(187, Short.MAX_VALUE))
+                        .addGap(38, 38, 38)
+                        .addComponent(btnThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(128, 128, 128)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(149, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(57, 57, 57)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(txtMaNhaTaiTro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(40, 40, 40)
-                        .addComponent(jLabel2))
+                .addGap(34, 34, 34)
+                .addComponent(jLabel1)
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
                     .addComponent(txtTenNhaTaiTro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txtHinhThuc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(41, 41, 41)
+                .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnThemNhaTaiTro)
                     .addComponent(btnThoat))
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
         pack();
@@ -127,7 +125,7 @@ public class ThemNhaTaiTro extends javax.swing.JFrame {
        {
             NhaTaiTroDao nttDao=new NhaTaiTroDao();
             Nhataitro tt=new Nhataitro();
-            tt.setMaNhaTaiTro(Integer.parseInt(this.txtMaNhaTaiTro.getText().toString()));
+            //tt.setMaNhaTaiTro(Integer.parseInt(this.txtMaNhaTaiTro.getText().toString()));
             tt.setTenNhaTaiTro(this.txtTenNhaTaiTro.getText());
             tt.setHinhThuc(this.txtHinhThuc.getText());
             
@@ -142,6 +140,7 @@ public class ThemNhaTaiTro extends javax.swing.JFrame {
            }
            // JOptionPane.showMessageDialog(rootPane,"Them thanh cong");
        }
+         
     }//GEN-LAST:event_btnThemNhaTaiTroActionPerformed
 
     private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
@@ -191,7 +190,6 @@ public class ThemNhaTaiTro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField txtHinhThuc;
-    private javax.swing.JTextField txtMaNhaTaiTro;
     private javax.swing.JTextField txtTenNhaTaiTro;
     // End of variables declaration//GEN-END:variables
 }

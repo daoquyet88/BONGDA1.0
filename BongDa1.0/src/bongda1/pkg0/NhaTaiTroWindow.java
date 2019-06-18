@@ -111,7 +111,7 @@ public class NhaTaiTroWindow extends javax.swing.JPanel {
                 .addComponent(jLabel2)
                 .addGap(27, 27, 27)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(btnSuaNhaTaiTro)
@@ -120,23 +120,23 @@ public class NhaTaiTroWindow extends javax.swing.JPanel {
                 .addGap(29, 29, 29))
         );
 
+        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Admin\\Desktop\\anh\\anhle.jpg")); // NOI18N
         jLabel3.setText("Images");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(126, 126, 126)
-                .addComponent(jLabel3)
-                .addContainerGap(232, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(0, 52, Short.MAX_VALUE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(217, 217, 217)
-                .addComponent(jLabel3)
-                .addContainerGap(268, Short.MAX_VALUE))
+                .addGap(48, 48, 48)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(142, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -146,17 +146,17 @@ public class NhaTaiTroWindow extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(47, Short.MAX_VALUE))
             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(83, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -187,14 +187,16 @@ public class NhaTaiTroWindow extends javax.swing.JPanel {
     }//GEN-LAST:event_btnSuaNhaTaiTroActionPerformed
 
     private void tbNhaTaiTroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbNhaTaiTroMouseClicked
-        
+        maNTT=Integer.parseInt(this.tbNhaTaiTro.getValueAt(this.tbNhaTaiTro.getSelectedRow(), 0).toString());
+        tenNTT = this.tbNhaTaiTro.getValueAt(this.tbNhaTaiTro.getSelectedRow(), 1).toString();
+        hinhThuc = this.tbNhaTaiTro.getValueAt(this.tbNhaTaiTro.getSelectedRow(), 2).toString(); 
         
     }//GEN-LAST:event_tbNhaTaiTroMouseClicked
 
     private void tbNhaTaiTroMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbNhaTaiTroMousePressed
-         maNTT=Integer.parseInt(this.tbNhaTaiTro.getValueAt(this.tbNhaTaiTro.getSelectedRow(), 0).toString());
-        tenNTT = this.tbNhaTaiTro.getValueAt(this.tbNhaTaiTro.getSelectedRow(), 1).toString();
-        hinhThuc = this.tbNhaTaiTro.getValueAt(this.tbNhaTaiTro.getSelectedRow(), 2).toString();
+//         maNTT=Integer.parseInt(this.tbNhaTaiTro.getValueAt(this.tbNhaTaiTro.getSelectedRow(), 0).toString());
+//        tenNTT = this.tbNhaTaiTro.getValueAt(this.tbNhaTaiTro.getSelectedRow(), 1).toString();
+//        hinhThuc = this.tbNhaTaiTro.getValueAt(this.tbNhaTaiTro.getSelectedRow(), 2).toString();
     }//GEN-LAST:event_tbNhaTaiTroMousePressed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

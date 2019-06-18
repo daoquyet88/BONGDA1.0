@@ -1,4 +1,3 @@
-
 package bongda1.pkg0;
 
 import dao.CauThuDAO;
@@ -15,7 +14,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
-import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -23,6 +21,7 @@ import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
+
 public class DoiBongWindow extends javax.swing.JPanel {
     String imgPath=null;
     //String dd="C:\\Users\\Admin\\Desktop\\anh\\hinh 3.jpg";
@@ -47,6 +46,7 @@ public class DoiBongWindow extends javax.swing.JPanel {
         initComponents();
         LoadData();
         LoadCB();
+        txtimg.setVisible(false);
         //lb_imgimg.setIcon(new ImageIcon("C:\\Users\\Admin\\Desktop\\anh\\hinh 3.jpg"));
     }    
     CauThuDAO ctd=new CauThuDAO();
@@ -79,7 +79,7 @@ public class DoiBongWindow extends javax.swing.JPanel {
         dtm.addColumn("MaDoiBong");
         for(entities.Cauthu ct : this.ctd.load_danhSach())
         {
-            dtm.addRow(new Object[]{ct.getMaCauThu(),ct.getTenCauThu(),ct.getViTri(),ct.getNgaySinh(),ct.getBanThang(),ct.getTheVang(),ct.getTheDo(),ct.getMaDoiBong()});
+            dtm.addRow(new Object[]{ct.getMaCauThu(),ct.getTenCauThu(),ct.getViTri(),ct.getSoAo(),ct.getNgaySinh(),ct.getBanThang(),ct.getTheVang(),ct.getTheDo(),ct.getMaDoiBong()});
             
         }
         this.tbcauthu.setModel(dtm);
@@ -149,6 +149,7 @@ public class DoiBongWindow extends javax.swing.JPanel {
         btn_TimKiem = new javax.swing.JButton();
         txtimg = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         jButton5.setText("jButton5");
 
@@ -287,6 +288,8 @@ public class DoiBongWindow extends javax.swing.JPanel {
             }
         });
 
+        jButton3.setText("Report");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -341,9 +344,11 @@ public class DoiBongWindow extends javax.swing.JPanel {
                                 .addComponent(jButton1)
                                 .addGap(85, 85, 85)
                                 .addComponent(btn_XoaDB, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(124, 124, 124)
+                                .addGap(82, 82, 82)
                                 .addComponent(btnXoa)
-                                .addGap(317, 317, 317))
+                                .addGap(80, 80, 80)
+                                .addComponent(jButton3)
+                                .addGap(200, 200, 200))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 785, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap())
@@ -386,7 +391,8 @@ public class DoiBongWindow extends javax.swing.JPanel {
                             .addComponent(btn_xoaDB)
                             .addComponent(btn_ThemDB)
                             .addComponent(btn_CapNhap)
-                            .addComponent(jButton2))
+                            .addComponent(jButton2)
+                            .addComponent(jButton3))
                         .addGap(43, 43, 43))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lb_img, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -567,7 +573,7 @@ public class DoiBongWindow extends javax.swing.JPanel {
             File f=new File("src/report1.jrxml");
             if(f.exists())
             {
-                JOptionPane.showMessageDialog(null,"ton tai");
+               // JOptionPane.showMessageDialog(null,"ton tai");
             }
             
             jd =JRXmlLoader.load(f);
@@ -592,6 +598,7 @@ public class DoiBongWindow extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cb_doiBong;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
