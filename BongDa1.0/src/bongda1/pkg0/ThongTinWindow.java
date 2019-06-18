@@ -5,6 +5,7 @@
  */
 package bongda1.pkg0;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -19,6 +20,13 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 
 public class ThongTinWindow extends javax.swing.JPanel {
@@ -461,9 +469,29 @@ public class ThongTinWindow extends javax.swing.JPanel {
           LTD.setLocation(400, 300);
           LTD.setVisible(true);
     }//GEN-LAST:event_btnThemlichthidauActionPerformed
-
+    JasperDesign jd;
+    JasperReport jr;
+    JasperPrint jp;
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+       Connection con =null;
+        try {
+            con=DriverManager.getConnection("jdbc:mysql://localhost/dbbongdanew","root","");
+            //JOptionPane.showMessageDialog(null,"ket noi thanh cong");
+            File f=new File("src/reportLich.jrxml");
+            if(f.exists())
+            {
+                //JOptionPane.showMessageDialog(null,"ton tai");
+            }
+            
+            jd =JRXmlLoader.load(f);
+            jr=JasperCompileManager.compileReport(jd);
+            jp=JasperFillManager.fillReport(jr,null,con);
+            JasperViewer.viewReport(jp,false);
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"khong noi thanh cong");
+           
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void txtChunhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtChunhaActionPerformed
