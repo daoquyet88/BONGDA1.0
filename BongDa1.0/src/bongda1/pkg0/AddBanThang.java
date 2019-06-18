@@ -207,14 +207,15 @@ public class AddBanThang extends javax.swing.JFrame {
         String [] str = mContext.strdata.split(",");
          if(mlc.equals("Update")){
              StrQuery+="Update chitiettrandau Set MaDoiBong=(select MaDoiBong from doibong where TenDoiBong ='"+cboDoiGhiBan.getSelectedItem().toString()+"')";
-             StrQuery+=",MaCauThu=(select MaCauThu from cauthu where TenCauThu ='"+cboCauThu.getSelectedItem().toString()+"')";
+             StrQuery+=",MaCauThu=(select MaCauThu from cauthu ct join (select MaDoiBong from doibong where TenDoiBong ='"+cboDoiGhiBan.getSelectedItem().toString()+"') db on ct.MaDoiBong = db.MaDoiBong where TenCauThu ='"
+                     +cboCauThu.getSelectedItem().toString()+"')";
              StrQuery+=",loaibanthang=(select MaLoai from loaibanthang where TenLoai ='"+cboLoaibanThang.getSelectedItem().toString()+"'),thoidiem='"+ghiban+"'";
-             StrQuery+=" Where MaTran ="+MaTran+" AND MaCauThu=(select MaCauThu from cauthu where TenCauThu ='"+str[0]+"') AND thoidiem = "+str[3];
+             StrQuery+=" Where MaTran ="+MaTran+" AND MaCauThu=(select MaCauThu from cauthu ct join (select MaDoiBong from doibong where TenDoiBong ='"+cboDoiGhiBan.getSelectedItem().toString()+"') db on ct.MaDoiBong = db.MaDoiBong where TenCauThu ='"+str[0]+"') AND thoidiem = "+str[3];
          }else{            
             StrQuery= "INSERT INTO chitiettrandau(MaTran,MaDoiBong,MaCauThu,loaibanthang,thoidiem)";
             StrQuery+=" Select '"+this.MaTran+"',(select MaDoiBong from doibong where TenDoiBong ='"+cboDoiGhiBan.getSelectedItem().toString()+"'),";
-            StrQuery+=" (select MaCauThu from cauthu where TenCauThu ='"+cboCauThu.getSelectedItem().toString()+"'),";
-            StrQuery+=" (select MaLoai from loaibanthang where TenLoai ='"+cboLoaibanThang.getSelectedItem().toString()+"'),'"+ghiban+"'";
+            StrQuery+=" (select MaCauThu from cauthu ct join (select MaDoiBong from doibong where TenDoiBong ='"+cboDoiGhiBan.getSelectedItem().toString()+"') db on ct.MaDoiBong = db.MaDoiBong where TenCauThu ='"+cboCauThu.getSelectedItem().toString()+"'),";
+            StrQuery+=" (select MaLoai from loaibanthang where TenLoai ='"+cboLoaibanThang.getSelectedItem().toString()+"'),"+ghiban;
          }
             int kq = Exec(StrQuery);
         if (kq == 1){
@@ -224,6 +225,7 @@ public class AddBanThang extends javax.swing.JFrame {
         }
         else 
             JOptionPane.showMessageDialog(rootPane,"Thao tác thất bại");   
+        this.dispose();
     }//GEN-LAST:event_dboSaveActionPerformed
 
     /**

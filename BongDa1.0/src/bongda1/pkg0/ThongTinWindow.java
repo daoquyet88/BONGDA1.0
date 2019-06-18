@@ -41,6 +41,7 @@ public class ThongTinWindow extends javax.swing.JPanel {
 //    }
     protected DefaultTableModel TModel;
     protected ArrayList<String> ListID = new  ArrayList<String>();
+    protected ArrayList<String> Listsl = new  ArrayList<String>();
     private void SetupTable(String Giai,String Vong ){
         TModel = new DefaultTableModel();
         Vector column = new Vector();
@@ -53,8 +54,10 @@ public class ThongTinWindow extends javax.swing.JPanel {
             Class.forName(className);
             Connection connection = DriverManager.getConnection(url,user,password);
             Statement st = connection.createStatement();
-            String Script = "select db1.TenDoiBong doi1,db2.TenDoiBong doi2,td.ThoiGian,std.TenSan,td.MaTran from trandau AS td join santhidau AS std ON td.San = std.ID";
+            String Script = "select db1.TenDoiBong doi1,db2.TenDoiBong doi2,td.ThoiGian,std.TenSan,td.MaTran,sl1+'-'+sl2 sl from trandau AS td join santhidau AS std ON td.San = std.ID";
                    Script+= " Join doibong db1 ON td.ChuNha = db1.MaDoiBong Join doibong db2 ON td.Khach = db2.MaDoiBong";
+                   Script+= " Left Join (select MaTran,MaDoiBong,count(*) sl1 from chitiettrandau group by MaTran,MaDoiBong) cttd on cttd.MaTran = td.MaTran AND cttd.MaDoiBong = db1.MaDoiBong ";
+                   Script+= " Left Join (select MaTran,MaDoiBong,count(*) sl2 from chitiettrandau group by MaTran,MaDoiBong) cttd1 on cttd1.MaTran = td.MaTran AND cttd1.MaDoiBong = db2.MaDoiBong ";
                    Script+= " Where (select MaGiai from giaidau where TenGiai ='"+Giai+"') = td.MaGiai";
                    Script+= " AND  (select Vong from vong where TenVong ='"+Vong+"') = td.Vong";
             ResultSet rs = st.executeQuery(Script);
@@ -66,6 +69,7 @@ public class ThongTinWindow extends javax.swing.JPanel {
                 row.add(rs.getString("ThoiGian"));
                 row.add(rs.getString("TenSan"));
                 ListID.add(rs.getString("MaTran"));
+                Listsl.add(rs.getString("sl"));
                 TModel.addRow(row);
             }
             rs.close();
@@ -128,7 +132,7 @@ public class ThongTinWindow extends javax.swing.JPanel {
             Statement st = connection.createStatement();
             String Script = "Select cttd.MaTran,TenDoiBong,TenCauThu,TenLoai,cttd.thoidiem From (Select * from chitiettrandau where MaTran = "+MaTran;
             Script += ") As cttd Join doibong db on cttd.MaDoiBong = db.MaDoiBong Join cauthu ct on cttd.MaCauThu = ct.MaCauThu join loaibanthang lbt On lbt.MaLoai = cttd.loaibanthang";
-                   
+//            Script += " ";   
             ResultSet rs = st.executeQuery(Script);
             
             while (rs.next()) {
@@ -165,7 +169,6 @@ public class ThongTinWindow extends javax.swing.JPanel {
         btndeleteTD = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         btnCapNhapdetail = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         cboVongDau = new javax.swing.JComboBox<String>();
@@ -182,6 +185,7 @@ public class ThongTinWindow extends javax.swing.JPanel {
         btnAddbt = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         cboGiaDau = new javax.swing.JComboBox();
+        btnDelete = new javax.swing.JButton();
 
         setName("pnThongTin"); // NOI18N
 
@@ -253,15 +257,13 @@ public class ThongTinWindow extends javax.swing.JPanel {
             }
         });
 
-        btnCapNhapdetail.setText("Cập Nhập");
+        btnCapNhapdetail.setText("Cập nhật");
         btnCapNhapdetail.setEnabled(false);
         btnCapNhapdetail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCapNhapdetailActionPerformed(evt);
             }
         });
-
-        jButton6.setText("Report");
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("LỊCH THI ĐẤU VÀ KẾT QUẢ TRẬN ĐẤU");
@@ -320,6 +322,14 @@ public class ThongTinWindow extends javax.swing.JPanel {
             }
         });
 
+        btnDelete.setText("Xóa");
+        btnDelete.setEnabled(false);
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -336,12 +346,13 @@ public class ThongTinWindow extends javax.swing.JPanel {
                             .addComponent(btndeleteTD)
                             .addGap(55, 55, 55)
                             .addComponent(jButton4)
-                            .addGap(296, 296, 296)
+                            .addGap(212, 212, 212)
                             .addComponent(btnAddbt)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(btnCapNhapdetail)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jButton6))
+                            .addGap(11, 11, 11)
+                            .addComponent(btnDelete)
+                            .addGap(75, 75, 75))
                         .addGroup(layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(layout.createSequentialGroup()
@@ -429,9 +440,9 @@ public class ThongTinWindow extends javax.swing.JPanel {
                         .addComponent(btnThemlichthidau)
                         .addComponent(btndeleteTD)
                         .addComponent(jButton4)
-                        .addComponent(jButton6)
                         .addComponent(btnCapNhapdetail)
-                        .addComponent(btnAddbt))
+                        .addComponent(btnAddbt)
+                        .addComponent(btnDelete))
                     .addComponent(btnEditLichTD)))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -478,11 +489,13 @@ public class ThongTinWindow extends javax.swing.JPanel {
         String DoiKhach = SubTModel.getValueAt(index, 1).toString();
         String San = SubTModel.getValueAt(index, 3).toString();
         String Ngay = SubTModel.getValueAt(index, 2).toString();
+//        String sl = SubTModel.getValueAt(index, 4).toString();
         MaTran = ListID.get(index);
         txtChunha.setText(ChuNha);
         txtKhach.setText(DoiKhach);
         txtSan.setText(San);
         txtThoiGian.setText(Ngay);
+        txtTySo.setText(Listsl.get(index));
         btnAddbt.setEnabled(true);
         btnEditLichTD.setEnabled(true);
         btndeleteTD.setEnabled(true);
@@ -518,14 +531,19 @@ public class ThongTinWindow extends javax.swing.JPanel {
         strdata +=","+ SubTModel2.getValueAt(index, 1).toString();
         strdata +=","+ SubTModel2.getValueAt(index, 2).toString();
         strdata +=","+ SubTModel2.getValueAt(index, 3).toString();
-        AddBanThang ABT = new AddBanThang(txtChunha.getText().toString(),txtKhach.getText().toString(),MaTran,this,"Update");
-        ABT.setLocation(300, 300);
-        ABT.setVisible(true);
+//        AddBanThang ABT = new AddBanThang(txtChunha.getText().toString(),txtKhach.getText().toString(),MaTran,this,"Update");
+//        ABT.setLocation(300, 300);
+//        ABT.setVisible(true);
     }//GEN-LAST:event_jtDetailMouseClicked
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btndeleteTDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndeleteTDActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_btndeleteTDActionPerformed
 
     private final String className="com.mysql.jdbc.Driver";
@@ -535,13 +553,13 @@ public class ThongTinWindow extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddbt;
     private javax.swing.JButton btnCapNhapdetail;
+    private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnEditLichTD;
     private javax.swing.JButton btnThemlichthidau;
     private javax.swing.JButton btndeleteTD;
     private javax.swing.JComboBox cboGiaDau;
     private javax.swing.JComboBox<String> cboVongDau;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;

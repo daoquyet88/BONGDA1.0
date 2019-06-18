@@ -31,12 +31,13 @@
                           <Component id="btndeleteTD" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
                           <Component id="jButton4" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="296" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="212" max="-2" attributes="0"/>
                           <Component id="btnAddbt" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="btnCapNhapdetail" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jButton6" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                          <Component id="btnDelete" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="1" attributes="0">
@@ -155,9 +156,9 @@
                       <Component id="btnThemlichthidau" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btndeleteTD" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jButton4" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton6" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnCapNhapdetail" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnAddbt" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnDelete" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="btnEditLichTD" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -312,17 +313,12 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnCapNhapdetail">
       <Properties>
-        <Property name="text" type="java.lang.String" value="C&#x1ead;p Nh&#x1ead;p"/>
+        <Property name="text" type="java.lang.String" value="C&#x1ead;p nh&#x1ead;t"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCapNhapdetailActionPerformed"/>
       </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButton6">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Report"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
@@ -426,6 +422,15 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboGiaDauActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnDelete">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="X&#xf3;a"/>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeleteActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
