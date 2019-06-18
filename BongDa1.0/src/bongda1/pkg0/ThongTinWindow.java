@@ -29,7 +29,7 @@ public class ThongTinWindow extends javax.swing.JPanel {
     
     public ThongTinWindow(){
         initComponents();
-        //init();
+        init();
     }
     public void init(){
         cboGiaDau.setModel(GetModel("Select * From giaidau","TenGiai"));
