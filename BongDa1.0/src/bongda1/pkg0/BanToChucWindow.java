@@ -2,6 +2,12 @@
 package bongda1.pkg0;
 import entities.*;
 import dao.*;
+import java.io.UnsupportedEncodingException;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.hibernate.*;
@@ -289,13 +295,31 @@ public class BanToChucWindow extends javax.swing.JPanel {
         SuaNguoiDung snd=new SuaNguoiDung(maNguoiDung, tenNguoiDung,useName,passWord,quyen,ngayLap);
         snd.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    public  String mahoaMD5(String srcText) throws NoSuchAlgorithmException, UnsupportedEncodingException 
+     {
+         String enrText ;
+         MessageDigest msd = MessageDigest.getInstance("MD5");
+         byte[] srcTextBytes = srcText.getBytes("UTF-8");
+         byte[] enrTexyBytes = msd.digest(srcTextBytes);
+         BigInteger bigInt = new BigInteger(1,enrTexyBytes);
+         enrText = bigInt.toString(16);
+         return  enrText;
+     }
     private void btn_taoTaioKhoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_taoTaioKhoanActionPerformed
        Nguoidung nd=new Nguoidung();
        nd.setMaNguoiDung(txt_maNguoiDung.getText().toString());
        nd.setTenNguoiDung(txt_tenNhanVien.getText().toString());
        nd.setUseName(txt_useName.getText().toString());
-       nd.setPassWord(txt_passWord.getText().toString());
+       String text=txt_passWord.getText();
+       String chuoi="";
+        try {
+            chuoi= mahoaMD5(text);
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(BanToChucWindow.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(BanToChucWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       nd.setPassWord(chuoi);
        nd.setQuyen(Integer.parseInt(txt_quyenHan.getText().toString()));
        nd.setNgayLap(txt_ngayLap.getText().toString());
        if(btcDao.add_BTC(nd))

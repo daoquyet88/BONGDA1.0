@@ -18,6 +18,8 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import dao.*;
 import entities.*;
+import java.math.BigInteger;
+import java.security.MessageDigest;
 import org.hibernate.*;
 
 /**
@@ -154,15 +156,33 @@ public class DangNhap extends javax.swing.JFrame {
     private void txtUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUserNameActionPerformed
-
+    public  String mahoaMD5(String srcText) throws NoSuchAlgorithmException, UnsupportedEncodingException 
+     {
+         String enrText ;
+         MessageDigest msd = MessageDigest.getInstance("MD5");
+         byte[] srcTextBytes = srcText.getBytes("UTF-8");
+         byte[] enrTexyBytes = msd.digest(srcTextBytes);
+         BigInteger bigInt = new BigInteger(1,enrTexyBytes);
+         enrText = bigInt.toString(16);
+         return  enrText;
+     }
     private void btnLogginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogginActionPerformed
         //Nguoidung nd=new Nguoidung();
+        String text=txtpass.getText();
+        String chuoi="";
+         try {
+             chuoi= mahoaMD5(text);
+         } catch (NoSuchAlgorithmException ex) {
+             Logger.getLogger(BanToChucWindow.class.getName()).log(Level.SEVERE, null, ex);
+         } catch (UnsupportedEncodingException ex) {
+             Logger.getLogger(BanToChucWindow.class.getName()).log(Level.SEVERE, null, ex);
+         }
         String useName=txtUserName.getText();
-        String passWord=txtpass.getText();
+        //String passWord=txtpass.getText();
         //JOptionPane.showMessageDialog(this, passWord+"kq");
         //String maNguoiDung=txtUserName.getText();
         try {
-            for(Nguoidung nd : this.ndDAO.load_danhSachND(useName,passWord))
+            for(Nguoidung nd : this.ndDAO.load_danhSachND(useName,chuoi))
             {            
                 int quyen=nd.getQuyen();
                 JOptionPane.showMessageDialog(this,"Dang Nhap thanh cong");

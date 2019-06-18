@@ -7,14 +7,21 @@ import javax.swing.table.DefaultTableModel;
 import entities.*;
 import dao.*;
 import java.awt.Image;
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
+import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
 public class DoiBongWindow extends javax.swing.JPanel {
     String imgPath=null;
@@ -549,35 +556,29 @@ public class DoiBongWindow extends javax.swing.JPanel {
     private void txt_TenCauThuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_TenCauThuActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_TenCauThuActionPerformed
-
+    JasperDesign jd;
+    JasperReport jr;
+    JasperPrint jp;
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        String path="C:\\Users\\Admin\\Documents\\GitHub\\BONGDA1.0\\BongDa1.0\\src\\bongda1\\pkg0\\report1.jrxml";
-        Connection con =null;
+         Connection con =null;
         try {
             con=DriverManager.getConnection("jdbc:mysql://localhost/dbbongdanew","root","");
             //JOptionPane.showMessageDialog(null,"ket noi thanh cong");
-            // tao jasperReport
-            JasperReport jr=JasperCompileManager.compileReport(path);
-            // tao jasperPrint
-            JasperPrint jp=JasperFillManager.fillReport(jr,null,con);
-            //Tao jasperView
-            JasperViewer.viewReport(jp);
+            File f=new File("src/report1.jrxml");
+            if(f.exists())
+            {
+                JOptionPane.showMessageDialog(null,"ton tai");
+            }
+            
+            jd =JRXmlLoader.load(f);
+            jr=JasperCompileManager.compileReport(jd);
+            jp=JasperFillManager.fillReport(jr,null,con);
+            JasperViewer.viewReport(jp,false);
+            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,"khong noi thanh cong");
            
         }
-   }
-    public Connection layKetNoi(){
-        Connection con =null;
-        try {
-            con=DriverManager.getConnection("jdbc:mysql://localhost/products","root","");
-            //JOptionPane.showMessageDialog(null,"ket noi thanh cong");
-            return con;
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null,"khong noi thanh cong");
-            return null;
-        }
-        
     }//GEN-LAST:event_jButton2ActionPerformed
 
 
