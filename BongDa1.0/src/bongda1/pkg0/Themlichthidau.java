@@ -187,6 +187,25 @@ public Themlichthidau() {
                 return false;
             }
     }
+    private String GetValue(String Querry,String Columns){
+        try {
+             Class.forName(className);
+            Connection connection = DriverManager.getConnection(url,user,password);
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery(Querry);
+            DefaultComboBoxModel Model= new DefaultComboBoxModel(); 
+            String Name ="";
+            while (rs.next()) {
+                Name =  rs.getString(Columns);
+                Model.addElement(Name);
+            }
+            rs.close();
+            return Name;
+        } catch (Exception e) {
+            return null;
+        }
+           
+    }
     private void SetValueDoiBong(String MaTran){
         try {
             Class.forName(className);
@@ -461,6 +480,8 @@ public Themlichthidau() {
 
         jLabel7.setText("Giải Đấu");
 
+        cboSan.setEnabled(false);
+
         jLabel8.setText("Trọng Tài");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -593,6 +614,8 @@ public Themlichthidau() {
 
     private void cboDoi1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboDoi1ActionPerformed
         // TODO add your handling code here:
+        String San = GetValue("Select SanNha From doibong Where TenDoiBong ='"+cboDoi1.getSelectedItem().toString()+"'","SanNha");
+        cboSan.setSelectedItem(San);
     }//GEN-LAST:event_cboDoi1ActionPerformed
 
     private void CboDoi2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CboDoi2ActionPerformed
